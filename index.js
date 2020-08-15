@@ -1711,7 +1711,7 @@ fs.readdir(`${op.name}/`, (err, files) => {
     props.command.aliases.forEach(alias => { 
       client.aliases.set(alias, props.command.name);
   
-  }).catch( );
+  })
 });
 })
   client.on("message", async message => {
