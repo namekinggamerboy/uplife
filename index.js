@@ -1707,7 +1707,7 @@ fs.readdir(`${op.name}/`, (err, files) => {
   jsfile.forEach((f, i) =>{
     let props = require(`${op.name}/${f}`);
     console.log(`🎉 file-${f} loaded!`);
-    client.commands.set(props.command.name, props).catch( );
+    client.commands.set(props.command.name, props);
     props.command.aliases.forEach(alias => { 
       client.aliases.set(alias, props.command.name);
   
