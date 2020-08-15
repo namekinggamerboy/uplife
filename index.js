@@ -1777,7 +1777,9 @@ let option = {
     if(!se.start) return console.log("❎ | please start then use setStatus");
   let guild;
   if(op.musicStatus = "true"){
- guild = await client.player.nowPlaying(op.guildId).name;
+ let playing = await client.player.nowPlaying(op.guildId);
+if(playing)guild = await client.player.nowPlaying(op.guildId).name;
+ if(!playing) guild = "❌ | nothing playing..";
 } else {
  guild = "❗ nothing playing..";
 }
@@ -1787,12 +1789,8 @@ if(op.statusTime){
       setInterval(() => {
         var d = Date();
         let a = d.toString();
-        const l = op.gameName
-          .replace("{guilds}", client.guilds.size)
-          .replace("{users}", client.users.size)
-          .replace("{realTime}", a)
-          .replace("{prefix}", Prefix).replace("{music}", guild);
-const la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+        let l = op.gameName.map(e => e.replace("{guilds}", client.guilds.size).replace("{users}", client.users.size).replace("{realTime}", a).replace("{prefix}", se.prefix).replace("{music}", guild));
+   let la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
      
         /* client.user.setActivity(la, { type: `${name}` }); */
         client.user.setPresence({
@@ -1807,12 +1805,8 @@ const la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random
    setInterval(() => {
          var d = Date();
         let a = d.toString();
-        const l = op.gameName
-          .replace("{guilds}", client.guilds.size)
-          .replace("{users}", client.users.size)
-          .replace("{realTime}", a)
-          .replace("{prefix}", Prefix).replace("{music}", guild);
-const la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+let l = op.gameName.map(e => e.replace("{guilds}", client.guilds.size).replace("{users}", client.users.size).replace("{realTime}", a).replace("{prefix}", se.prefix).replace("{music}", guild));
+let la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
      
         /* client.user.setActivity(la, { type: `${name}` }); */
         client.user.setPresence({
