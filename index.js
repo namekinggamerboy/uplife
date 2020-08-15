@@ -1197,13 +1197,14 @@ let ch1 = member.guild.channels.get(ch);
     se.start = true;
 },
 async command(op) {
+   if(!se.start) return console.log("❌ | please start script then use");
     client.on("message", async msg => {
       if (msg.channel.type == "dm") return;
       if (msg.author.bot) {
         return;
       }
       var message = msg;
-      prefiX.setPrefix(op.prefix);
+      prefiX.setPrefix(se.prefix);
       if (prefiX.getPrefix(msg.guild.id) === null) {
         var prefix = prefiX.getPrefix();
       } else {
@@ -1702,7 +1703,7 @@ fs.readdir(`${op.name}/`, (err, files) => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
           var msg = message;
-      prefiX.setPrefix(op.prefix);
+      prefiX.setPrefix(se.prefix);
       if (prefiX.getPrefix(msg.guild.id) === null) {
         var prefix = prefiX.getPrefix();
       } else {
