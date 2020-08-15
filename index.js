@@ -1732,16 +1732,24 @@ let option = {
   guilds: client.guilds,
   author: message.author,
   emojis: message.guild.emojis,
-  mentionuser: message.mentions.users.first(),
-  mentionchannel: message.mentions.channels.first(),
-  mentionrole: message.mentions.roles.first(),
+  mentionUser: message.mentions.users.first(),
+  mentionChannel: message.mentions.channels.first(),
+  mentionRole: message.mentions.roles.first(),
   roles: message.guild.roles,
   channel: message.channel,
   channels: message.guild.channels,
   owner: se.owner,
+  prefix: se.prefix,
+  ping: client.ws.ping,
+  allMembersCount: message.guild.memberCount,
+  BotTyping: message.channel.startTyping(),
+  BotStopTyping: message.channel.stopTyping(),
   attachment: message.attachments.first(),
-  fullmessage: messageArray,
-  commandlist: client.commands.map(e => e.command.name)
+  fullMessage: messageArray,
+  commandList: client.commands.map(e => e.command.name),
+  commandsCount: client.commands.length,
+  commandDescription: client.commands.map(e => e.command.description)
+  commandUsage: client.commands.map(e => e.command.usage)
 };
           
   try {
