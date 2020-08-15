@@ -1790,7 +1790,7 @@ if(op.statusTime){
           .replace("{guilds}", client.guilds.size)
           .replace("{users}", client.users.size)
           .replace("{realTime}", a)
-          .replace("{prefix}", Prefix).replace("{music}, guild);
+          .replace("{prefix}", Prefix).replace("{music}", guild);
 const la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
      
         /* client.user.setActivity(la, { type: `${name}` }); */
@@ -1810,7 +1810,7 @@ const la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random
           .replace("{guilds}", client.guilds.size)
           .replace("{users}", client.users.size)
           .replace("{realTime}", a)
-          .replace("{prefix}", Prefix).replace("{music}, guild);
+          .replace("{prefix}", Prefix).replace("{music}", guild);
 const la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
      
         /* client.user.setActivity(la, { type: `${name}` }); */
