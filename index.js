@@ -1746,8 +1746,19 @@ let option = {
   BotStopTyping: message.channel.stopTyping(),
   attachment: message.attachments.first(),
   fullMessage: messageArray,
-  commandList: client.commands.map(e => e.command.name),
+  emoteCount: message.guild.emojis.size,
+  channelCount: message.guild.channels.size,
+  roleCount: message.guild.roles.size,
+  serverCount: client.guilds.size,
   commandsCount: client.commands.length,
+  messageLength: messageArray.length,
+  checkAdmin: message.member.hasPermission("ADMINISTRATOR"),
+  randomUser: message.guild.members.filter(m => m.id !== message.author.id).random().user,
+  randomUserID: message.guild.members.filter(m => m.id !== message.author.id).random().user.id,
+  uptime: moment.duration(client.uptime).format("d[d] h[h] m[m] s[s]"),
+  serverRegion: message.guild.region,
+  getBotInvite: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8`,
+  commandList: client.commands.map(e => e.command.name),
   commandDescription: client.commands.map(e => e.command.description)
   commandUsage: client.commands.map(e => e.command.usage)
 };
