@@ -105,24 +105,7 @@ client.on("disconnected", () => {
         storage: `${op.giveawaystorage}`||__dirname+"/giveaways.json"
       });
         }
-  /*    setInterval(() => {
-        var d = Date();
-        let a = d.toString();
-        const la = game
-          .replace("{guilds}", client.guilds.size)
-          .replace("{users}", client.users.size)
-          .replace("{realTime}", a)
-          .replace("{prefix}", Prefix);
-        /* client.user.setActivity(la, { type: `${name}` }); */
-     /*   client.user.setPresence({
-          activity: {
-            name: `${la}`,
-            type: `${name}`
-          },
-          status: `${stats}`
-        });
-      }, op.statusTime||120000); */
-    });
+});
 
   
 client.on("message", msg => {
@@ -1789,7 +1772,60 @@ let option = {
     console.log(`❌ | ${client.users.get(author).tag} not afk`);
   }
   },
-  
+  async setStatus(op){
+    if(!se.start) return console.log("❎ | please start then use setStatus");
+  let guild;
+  if(op.musicStatus = "true"){
+ guild = await client.player.nowPlaying(op.guildId).name;
+} else {
+ guild = "❗ nothing playing..";
+}
+   
+client.on('ready', () => {
+if(op.statusTime){
+      setInterval(() => {
+        var d = Date();
+        let a = d.toString();
+        const l = op.gameName
+          .replace("{guilds}", client.guilds.size)
+          .replace("{users}", client.users.size)
+          .replace("{realTime}", a)
+          .replace("{prefix}", Prefix).replace("{music}, guild);
+const la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+     
+        /* client.user.setActivity(la, { type: `${name}` }); */
+        client.user.setPresence({
+          activity: {
+            name: `${l[la]}`,
+            type: `${op.type}`
+          },
+          status: `${op.stats}`
+        });
+      }, op.statusTime); 
+    } else {
+   setInterval(() => {
+         var d = Date();
+        let a = d.toString();
+        const l = op.gameName
+          .replace("{guilds}", client.guilds.size)
+          .replace("{users}", client.users.size)
+          .replace("{realTime}", a)
+          .replace("{prefix}", Prefix).replace("{music}, guild);
+const la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+     
+        /* client.user.setActivity(la, { type: `${name}` }); */
+        client.user.setPresence({
+          activity: {
+            name: `${l[la]}`,
+            type: `${op.type}`
+          },
+          status: `${op.stats}`
+        });
+      }, 120000); 
+}
+});
+},
+
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
