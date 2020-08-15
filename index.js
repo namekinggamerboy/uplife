@@ -21,7 +21,8 @@ const se = {
 owner: null,
 start: false,
 rr: false,
-youtubeapi: null
+youtubeapi: null,
+prefix: null
   
 }
 
@@ -61,7 +62,7 @@ if (!token)
     return console.log(chalk.bold.red(
       "[uplife-api]{type: error} ⚠️: make sure your give me bot prefix"
     ));
-  
+ se.prefix = Prefix; 
   if (!owner)
     return console.log(chalk.bold.red(
       "[uplife-api]{type: error} ⚠️: make sure your give me bot Owner id"
