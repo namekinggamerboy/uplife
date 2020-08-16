@@ -1845,6 +1845,9 @@ let l = op.gameName.replace("{guilds}", client.guilds.size).replace("{users}", c
 }
 });
 },
+async deleteTicket(op){
+let message = se.message;
+},
  async createTicket(msg, msg1, embed){
    let message = se.message;
 
