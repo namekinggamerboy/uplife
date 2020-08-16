@@ -1646,7 +1646,6 @@ await rmsg.react(op.react4).catch();
   async reactRoleSetup(op){
     if(!op) return console.log("❌ | please enter file name[only support json type]");
      const manager = new ReactionRoleManager(client, {
-
     storage: op
        });
 client.reactionRoleManager = manager;
@@ -1740,6 +1739,7 @@ let option = {
   roles: message.guild.roles,
   channel: message.channel,
   channels: message.guild.channels,
+  checkNsfwCannel : message.channel.nsfw,
   owner: se.owner,
   prefix: se.prefix,
   ping: client.ws.ping,
@@ -1760,7 +1760,12 @@ let option = {
   uptime: moment.duration(client.uptime).format("d[d] h[h] m[m] s[s]"),
   serverRegion: message.guild.region,
   serverName: message.guild.name,
+  serverAfkChannel: message.guild.afkChannel,
+  serverVerificationLevel : message.guild.verificationLevel,
   serverId: message.guild.id,
+  serverIcon' message.guild.icon
+        ? `https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png?size=2048`
+        : "https://discordemoji.com/assets/emoji/discordcry.png",
   getBotInvite: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8`,
   commandList: client.commands.map(e => "`"+e.command.name+"`").join(",")
 };
