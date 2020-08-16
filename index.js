@@ -1852,10 +1852,10 @@ async deleteTicket(op){
 if(op.ticketChecker === "true"){
   if(!channel.name.replace("ticket-","") === author.id) return channel.send("❌ | your not create this ticket");
 }
- if(!message.channel.startsWith("ticket-")) return channel.send("❌ | this channel not a ticket channel");
+ if(!message.channel.name.startsWith("ticket-")) return channel.send("❌ | this channel not a ticket channel");
   channel.send("`✔️` | delete ticket 5s");
 setTimeout(() => {
-  if(message.channel.startsWith("ticket-")) return message.channel.delete(op.deleteReason);
+  if(message.channel.name.startsWith("ticket-")) return message.channel.delete(op.deleteReason);
 }, 5000);
 },
  async createTicket(msg, msg1, embed){
