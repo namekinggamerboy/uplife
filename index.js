@@ -34,6 +34,55 @@ bot: client,
 
 version: require("./package.json").version,
 
+randomNum(min, max) {
+		return Math.floor(Math.random() * (max - min)) + min;
+	},
+
+printDate(pdate, isLongDate){
+        let monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+          ];
+        
+        let day = pdate.getDate();
+        let monthIndex = pdate.getMonth();
+        let year = pdate.getFullYear();
+        let hour = pdate.getHours() < 10 ? "0" + pdate.getHours() : pdate.getHours();
+        let minute = pdate.getMinutes() < 10 ? "0" + pdate.getMinutes() : pdate.getMinutes();
+
+        let thedate = (isLongDate) ? day + " " + monthNames[monthIndex] + " " + year + " at " + hour + "h" + minute 
+        : day + " " + monthNames[monthIndex] + " " + year
+        return thedate;
+	},
+
+convertMs(milliseconds){
+		let roundTowardsZero = milliseconds > 0 ? Math.floor : Math.ceil;
+		let days = roundTowardsZero(milliseconds / 86400000),
+		hours = roundTowardsZero(milliseconds / 3600000) % 24,
+		minutes = roundTowardsZero(milliseconds / 60000) % 60,
+		seconds = roundTowardsZero(milliseconds / 1000) % 60;
+		if(seconds === 0){
+			seconds++;
+		}
+		let isDays = days > 0,
+		isHours = hours > 0,
+		isMinutes = minutes > 0;
+		let pattern = 
+		(!isDays ? "" : (isMinutes || isHours) ? "{days} days, " : "{days} days and ")+
+		(!isHours ? "" : (isMinutes) ? "{hours} hours, " : "{hours} hours and ")+
+		(!isMinutes ? "" : "{minutes} minutes and ")+
+		("{seconds} seconds");
+		let sentence = pattern
+			.replace("{duration}", pattern)
+			.replace("{days}", days)
+			.replace("{hours}", hours)
+			.replace("{minutes}", minutes)
+			.replace("{seconds}", seconds);
+		return sentence;
+	},
+
   start(token, Prefix, owner, op) {
   
 if (!token)
