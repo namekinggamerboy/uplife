@@ -1850,7 +1850,7 @@ async deleteTicket(op){
    let channel = message.channel;
    let author = message.author;
 if(op.ticketChecker === "true"){
-  if(!channel.name.replace("ticket-","") = author.id) return channel.send("❌ | your not create this ticket");
+  if(!channel.name.replace("ticket-","") === author.id) return channel.send("❌ | your not create this ticket");
 }
  if(!message.channel.startsWith("ticket-")) return channel.send("❌ | this channel not a ticket channel");
   channel.send("`✔️` | delete ticket 5s");
