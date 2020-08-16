@@ -1858,11 +1858,13 @@ let l = op.gameName.replace("{guilds}", client.guilds.size).replace("{users}", c
 
             c.createOverwrite(role2, {
                 SEND_MESSAGES: false,
-                READ_MESSAGES: false
+                READ_MESSAGES: false,
+                VIEW_CHANNEL: false
             });
             c.createOverwrite(message.author, {
                 SEND_MESSAGES: true,
-                READ_MESSAGES: true
+                READ_MESSAGES: true,
+                VIEW_CHANNEL: true
             });
       
      let cmsg = msg.replace("{usertag}", message.author.tag).replace("{username}", message.author.username).replace("{userid}", message.author.id).replace("{reason}", embed.reason).replace("{gguildname}", message.guild.name);
@@ -1872,19 +1874,15 @@ let l = op.gameName.replace("{guilds}", client.guilds.size).replace("{users}", c
    let cmsg1 = msg1.replace("{usertag}", message.author.tag).replace("{username}", message.author.username).replace("{userid}", message.author.id).replace("{reason}", embed.reason).replace("{gguildname}", message.guild.name); 
       
       if(embed.embedMessage = "true"){
-            const embed = new Discord.MessageEmbed()
+           let em = new Discord.MessageEmbed()
                 .setColor(embed.color)
              .setDescription(cmsg1)
                 .setTimestamp();
-            c.send({
-                embed: embed
-            });
-      } else {
-      
-        c.send(cmsg1);
-       
+            c.send(em);
+      } else { 
+        c.send(cmsg1); 
       }
-        }).catch( ); // Send errors to console
+        }).catch(console.error); // Send errors to console
 
 },
   async setAfk(op){
