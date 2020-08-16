@@ -23,7 +23,9 @@
     "ms": "*",
     "discord-prefix": "^1.0.9",
     "quick.db": "^7.1.1",
-    "discord-canvas": "^1.1.0"
+    "discord-canvas": "^1.1.0",
+    "snekfetch": "^3.6.1",
+    "superagent": "^3.8.3"
   },
   "devDependencies": {
     "eslint": "^7.0.0"
