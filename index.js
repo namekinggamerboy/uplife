@@ -35,7 +35,36 @@ bot: client,
 version: require("./package.json").version,
 
 nsfw(op){
-const superagent = require('superagent');
+const superagent = require('superagent'),
+snekfetch = require("snekfetch");
+let message = se.message;
+superagent.get('https://nekobot.xyz/api/image')
+    .query({ type: op.type })
+    .end((err, response) => {
+if(op.embed === "false"){
+   message.channel.send({
+	files: [ response.body.message ] });
+} else {
+if(!op.type === "pgif"){
+ message.channel.send({embed:{
+color: embed.color||"#ffffff",
+title: embed.title||" ",
+image: { url: response.body.message },
+discription: embed.Message||" "
+}});
+} else {
+  let fg = new Discord.MessageAttachment(response.body.message, "pgif.gif");
+ let em = new Discord.MessageEmbed()
+  .setTitle(embed.title||" ")
+  .setColor(embed.color||"#ffffff")
+  .setDiscription(embed.message|| " ")
+  .attachFiles(fg)
+  .setImage('attachment://pgif.gif');
+ message.channel.send(em);
+}
+
+}
+    });
 
 },
 
