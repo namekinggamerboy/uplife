@@ -1855,6 +1855,7 @@ let message = se.message;
    if(embed.checkChannel === "true"){
         if (message.guild.channels.find(e => e.name === "ticket-" + message.author.id)) return message.channel.send(`❌ | You already have a ticket open.`);
     }  
+  message.guild.channels.create(embed.categoryName,{ type: "category" }).then(ch => {
   message.guild.channels.create(`ticket-${message.author.id}`,{ type: "text" }).then(c => {
         
             let role2 = message.guild.roles.find(e => e.name === "@everyone");
@@ -1869,12 +1870,11 @@ let message = se.message;
                 READ_MESSAGES: true,
                 VIEW_CHANNEL: true
             });
-      
-     let cmsg = msg.replace("{usertag}", message.author.tag).replace("{username}", message.author.username).replace("{userid}", message.author.id).replace("{reason}", embed.reason).replace("{gguildname}", message.guild.name);
+     let cmsg = msg.replace("{usertag}", message.author.tag).replace("{channelname}", c.name).replace("{username}", message.author.username).replace("{userid}", message.author.id).replace("{reason}", embed.reason).replace("{gguildname}", message.guild.name);
       
       message.channel.send(`${cmsg}`);
   
-   let cmsg1 = msg1.replace("{usertag}", message.author.tag).replace("{username}", message.author.username).replace("{userid}", message.author.id).replace("{reason}", embed.reason).replace("{gguildname}", message.guild.name); 
+   let cmsg1 = msg1.replace("{usertag}", message.author.tag).replace("{channelname}", c.name).replace("{username}", message.author.username).replace("{userid}", message.author.id).replace("{reason}", embed.reason).replace("{gguildname}", message.guild.name); 
       
       if(embed.embedMessage = "true"){
            let em = new Discord.MessageEmbed()
@@ -1885,8 +1885,8 @@ let message = se.message;
       } else { 
         c.send(cmsg1); 
       }
-        }).catch(console.error); // Send errors to console
-
+        }).catch( ); // Send errors to console
+       }).catch( );
 },
   async setAfk(op){
     let message = op.msg;
