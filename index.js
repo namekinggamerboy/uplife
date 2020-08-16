@@ -1760,9 +1760,7 @@ let option = {
   serverName: message.guild.name,
   serverId: message.guild.id,
   getBotInvite: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8`,
-  commandList: client.commands.map(e => e.command.name).join(" "),
-  commandDescription: client.commands.map(e => e.command.description).join(" "),
-  commandUsage: client.commands.map(e => e.command.usage).join(" ")
+  commandList: client.commands.map(e => "`"+e.command.name+"`").join(",")
 };
           
   try {
