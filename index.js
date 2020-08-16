@@ -1797,9 +1797,9 @@ let option = {
   },
   async setStatus(op){
     if(!se.start) return console.log("❎ | please start then use setStatus");
-  let guild = "❌ | nothing playing..";
+  let guild;
   if(op.musicStatus = "true"){
-   guild = se.music;
+   guild = se.music||"❌ | nothing playing..";
  }
    
 client.on('ready', () => {
