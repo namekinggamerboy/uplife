@@ -1715,10 +1715,10 @@ fs.readdir(`${op.name}/`, (err, files) => {
     let commandfile;
 
     if (client.commands.has(cmd)) {
-      commandfile = client.commands.get(cmd).catch( );
+      commandfile = client.commands.get(cmd);
   } else 
     if (client.aliases.has(cmd)) {
-    commandfile = client.commands.get(client.aliases.get(cmd).catch( )).catch( );
+    commandfile = client.commands.get(client.aliases.get(cmd));
   }
   
       if (!message.content.startsWith(prefix)) return;
