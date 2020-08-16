@@ -23,7 +23,7 @@ start: false,
 rr: false,
 youtubeapi: null,
 prefix: null,
-music: "❌ | nothing playing.."
+music: null
   
 }
 
@@ -1797,7 +1797,7 @@ let option = {
   },
   async setStatus(op){
     if(!se.start) return console.log("❎ | please start then use setStatus");
-  let guild;
+  let guild = "❌ | nothing playing..";
   if(op.musicStatus = "true"){
    guild = se.music;
  }
