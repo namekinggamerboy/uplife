@@ -1765,8 +1765,8 @@ let option = {
   serverAfkChannel: message.guild.afkChannel,
   serverVerificationLevel : message.guild.verificationLevel,
   serverId: message.guild.id,
-  serverIcon' message.guild.icon
-        ? `https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png?size=2048`
+  serverIcon: message.guild.icon
+        ? `https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png?size=4096`
         : "https://discordemoji.com/assets/emoji/discordcry.png",
   getBotInvite: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8`,
   commandList: client.commands.map(e => "`"+e.command.name+"`").join(",")
