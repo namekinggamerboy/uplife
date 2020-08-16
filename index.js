@@ -23,7 +23,8 @@ start: false,
 rr: false,
 youtubeapi: null,
 prefix: null,
-music: null
+music: null,
+message: null
   
 }
 
@@ -144,6 +145,7 @@ color: 0x00ff00
     if (msg.author.bot) {
       return;
     }
+ se.message = msg;
  if (prefiX.getPrefix(msg.guild.id) === null) {
         var prefix = prefiX.getPrefix()
     } else {
