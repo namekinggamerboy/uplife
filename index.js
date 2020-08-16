@@ -34,6 +34,11 @@ bot: client,
 
 version: require("./package.json").version,
 
+nsfw(op){
+const superagent = require('superagent');
+
+},
+
 randomNum(min, max) {
 		return Math.floor(Math.random() * (max - min)) + min;
 	},
