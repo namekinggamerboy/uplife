@@ -1846,7 +1846,17 @@ let l = op.gameName.replace("{guilds}", client.guilds.size).replace("{users}", c
 });
 },
 async deleteTicket(op){
-let message = se.message;
+   let message = se.message;
+   let channel = message.channel;
+   let author = message.author;
+if(op.ticketChecker === "true"){
+  if(!channel.name.replace("ticket-","") = author.id) return channel.send("❌ | your not create this ticket");
+}
+ if(!message.channel.startsWith("ticket-")) return channel.send("❌ | this channel not a ticket channel");
+  channel.send("`✔️` | delete ticket 5s");
+setTimeout(() => {
+  if(message.channel.startsWith("ticket-")) return message.channel.delete(op.deleteReason);
+}, 5000);
 },
  async createTicket(msg, msg1, embed){
    let message = se.message;
@@ -1885,8 +1895,8 @@ let message = se.message;
       } else { 
         c.send(cmsg1); 
       }
-        }).catch( ); // Send errors to console
-       }).catch( );
+        }).catch(console.error); // Send errors to console
+       }).catch(console.error);
 },
   async setAfk(op){
     let message = op.msg;
