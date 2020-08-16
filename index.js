@@ -22,7 +22,8 @@ owner: null,
 start: false,
 rr: false,
 youtubeapi: null,
-prefix: null
+prefix: null,
+music: "❌ | nothing playing.."
   
 }
 
@@ -1006,7 +1007,8 @@ thumbnail: { url: song.thumbnail },
             // Else, play the song
             let song = await client.player.play(message.member.voice.channel, args.join(" "), message.author);
             let data = await Promise.resolve(song.ytdl.getInfo(song.url));
-            let songtime = data.length_seconds * 1000;
+            se.music = song.name;
+   let songtime = data.length_seconds * 1000;
 message.channel.send(
               new Discord.MessageEmbed()
 .setColor("#ccffcc")
@@ -1797,12 +1799,8 @@ let option = {
     if(!se.start) return console.log("❎ | please start then use setStatus");
   let guild;
   if(op.musicStatus = "true"){
- let playing = await client.player.nowPlaying(op.guildId);
-if(playing)guild = await client.player.nowPlaying(op.guildId).name;
- if(!playing) guild = "❌ | nothing playing..";
-} else {
- guild = "❗ nothing playing..";
-}
+   guild = se.music;
+ }
    
 client.on('ready', () => {
 if(op.statusTime){
