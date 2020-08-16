@@ -1007,7 +1007,6 @@ thumbnail: { url: song.thumbnail },
             // Else, play the song
             let song = await client.player.play(message.member.voice.channel, args.join(" "), message.author);
             let data = await Promise.resolve(song.ytdl.getInfo(song.url));
-            se.music = song.name;
    let songtime = data.length_seconds * 1000;
 message.channel.send(
               new Discord.MessageEmbed()
@@ -1018,6 +1017,7 @@ message.channel.send(
 .addField("video duration:",`**${moment.duration(songtime).format(" H[h] m[m] s[s]")}**`,true)
 .setFooter(song.requestedBy.tag, song.requestedBy.displayAvatarURL())
             );
+se.music = song.name;
           }
         } else if (command === "stop") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
