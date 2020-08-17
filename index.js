@@ -1983,7 +1983,7 @@ discription: embed.Message||" "
 
 },
  dashboardOn(op){
-client.on("ready", async => () {
+client.on("ready", async () => {
  //Startup
 client.appInfo = await client.fetchApplication();
   setInterval(async () => {
