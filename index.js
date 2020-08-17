@@ -1988,7 +1988,7 @@ let option = {
  serverCount: client.guilds.size,
  memberCount: client.users.size,
  channelCount: client.channels.size,
- emojiCount: client.emoji.size
+ emojiCount: client.emojis.size
 };
 client.on("ready", async () => {
  //Startup
@@ -2006,7 +2006,7 @@ let option = {
  serverCount: client.guilds.size,
  memberCount: client.users.size,
  channelCount: client.channels.size,
- emojiCount: client.emoji.size
+ emojiCount: client.emojis.size
 };
 fs.readdir(op.name+"/", (_err, files) => {
     files.forEach((file) => {
