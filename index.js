@@ -1125,16 +1125,29 @@ se.music = song.name;
           let songtime = data.length_seconds * 1000;
           let queue = await client.player.getQueue(message.guild.id);
           let now = queue.connection.dispatcher.streamTime;
-          message.channel.send({
+            let data = await Promise.resolve(ytdl.getInfo(nowPlaying.url));
+        let songtime = (data.length_seconds * 1000);
+       let now = (serverQueue.connection.dispatcher.streamTime);
+        //let barlength = 30;
+        let barlength = 21;
+        let completedpercent = ((now / songtime) * barlength);
+        let array = []; 
+for (let i = 0; i < completedpercent - 1; i++) { 
+array.push('▬'); } 
+array.push('🔘'); 
+for (let i = 0; i < barlength - completedpercent - 1; i++) { 
+array.push('▬');
+ }   
+   message.channel.send({
             embed: {
               title: `Now playing`,
               description: `**[${song.name}](${
                 song.url
-              })**\nduration-  **${moment
+              })**\n${array.join('')}duration-  **${moment
                 .duration(now)
                 .format(" H[h] m[m] s[s]")} / ${moment
                 .duration(songtime)
-                .format(" H[h] m[m] s[s]")}**\n request by **${song.requestedBy.tag}**`,
+                .format(" H[h] m[m] s[s]")}**\nrequest by.**${song.requestedBy.tag}**`,
               thumbnail: { url: song.thumbnail },
               color: "RANDOM"
             }
