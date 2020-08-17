@@ -1994,14 +1994,14 @@ client.appInfo = await client.fetchApplication();
 });
 },
  eventHeader(op){
-fs.readdir(__dirname+"/events/", (_err, files) => {
+fs.readdir(op.name+"/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
-        const event = require(`./events/${file}`);
+        const event = require(op.name+`/${file}`);
         let eventName = file.split(".")[0];
         console.log(`👌 Event loaded: ${eventName}`);
-        client.on(event.eventName, event.bind(null, client));
-        delete require.cache[require.resolve(__dirname+`/events/${file}`)];
+        client.on(event.uplife.eventName, event.bind(null, client));
+        delete require.cache[require.resolve(op.name+`/${file}`)];
     });
 });
 },
