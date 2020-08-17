@@ -1952,7 +1952,7 @@ nsfw(op){
 const superagent = require('superagent'),
 snekfetch = require("snekfetch");
 let message = se.message;
-if(!message.channel.nsfw === false) return;
+if(!message.channel.nsfw === true) return;
 superagent.get('https://nekobot.xyz/api/image')
     .query({ type: op.type })
     .end((err, response) => {
