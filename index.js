@@ -1197,12 +1197,22 @@ se.music = song.name;
             return msg.channel.send({
               embed: { title: "nothing playing!", color: 0x0099ff }
             });
-let em = new Discord.MessageEmbed().setTitle("server queue.").setColor("#ff0000");
+let em = new Discord.MessageEmbed().setTitle("server queue.").setColor("#FFFF00");
    queue.songs.forEach((song, i) => {
  em.addField(`${i === 0 ? 'Current' : `#${i+1}`} - ${song.name} | ${song.author}`, `request by. **${song.requestedBy.tag}**`);       
      });
           message.channel.send(em);
-        } else if (command === "clear-queue") {
+        } else if(command === 'shuffle'){
+let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
+          if (!aSongIsAlreadyPlaying)
+            return message.channel.send({
+              embed: { title: "nothing playing!", color: 0x0099ff }
+            });
+        // Shuffle the server queue
+        client.player.shuffle(message.guild.id).then(() => {
+             message.channel.send({ embed:{ title: 'Queue shuffled!', color: 0x0099ff }});
+        });
+     } else if (command === "clear-queue") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
           if (!aSongIsAlreadyPlaying)
             return message.channel.send({
