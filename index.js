@@ -1134,7 +1134,7 @@ se.music = song.name;
                 .duration(now)
                 .format(" H[h] m[m] s[s]")} / ${moment
                 .duration(songtime)
-                .format(" H[h] m[m] s[s]")}**`,
+                .format(" H[h] m[m] s[s]")}**\n request by **${song.requestedBy.tag}**`,
               thumbnail: { url: song.thumbnail },
               color: "RANDOM"
             }
@@ -1181,25 +1181,27 @@ se.music = song.name;
           message.channel.send({
             embed: { title: `${song.name} skipped!`, color: 0xff00ff }
           });
-        } else if (command === "queue" || command === "q") {
+        } else
+ /* if (command === "queue" || command === "q") {
           let queue = await client.player.getQueue(message.guild.id);
           if (!queue)
             return msg.channel.send({
               embed: { title: "nothing playing!", color: 0x0099ff }
             });
-          message.channel.send({
-            embed: {
-              title: "Server queue:",
-              color: 0xffff00,
-              description: queue.songs
-                .map((song, i) => {
-                  return `${i === 0 ? "Current" : `#${i + 1}`} - ${
-                    song.name
-                  } | ${song.author}`;
-                })
-                .join("\n")
-            }
-          });
+          message.channel.send(new Discord.MessageEmbed().setTitle(""));
+        } else*/
+
+ if (command === "queue" || command === "q") {
+          let queue = await client.player.getQueue(message.guild.id);
+         if (!queue)
+            return msg.channel.send({
+              embed: { title: "nothing playing!", color: 0x0099ff }
+            });
+let em = new Discord.MessageEmbed().setTitle("server queue.").setColor("#ff0000");
+   queue.songs.forEach((song, i) => {
+ em.addField(`${i === 0 ? 'Current' : `#${i+1}`} - ${song.name} | ${song.author}`, `request by. **${song.requestedBy.tag}**`);       
+     });
+          message.channel.send(em);
         } else if (command === "clear-queue") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
           if (!aSongIsAlreadyPlaying)
