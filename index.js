@@ -1982,7 +1982,17 @@ discription: embed.Message||" "
     });
 
 },
-
+ dashboardOn(op){
+client.on("ready", async => () {
+ //Startup
+client.appInfo = await client.fetchApplication();
+  setInterval(async () => {
+    client.appInfo = await client.fetchApplication();
+  }, op.time);
+  require(op.fileName)(client); 
+  console.log("✔️ | success dashboard on");
+});
+},
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
