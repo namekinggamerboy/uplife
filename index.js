@@ -2000,7 +2000,7 @@ fs.readdir(op.name+"/", (_err, files) => {
         const event = require(op.name+`/${file}`);
         let eventName = file.split(".")[0];
         console.log(`👌 Event loaded: ${eventName}`);
-        client.on(event.uplife.eventName, event.bind(null, client));
+        client.on(eventName.replace("joinMember", "guildMemberAdd").replace("leaveMember", "guildMemberRemove").replace("start", "ready"), event.bind(null, client));
         delete require.cache[require.resolve(op.name+`/${file}`)];
     });
 });
