@@ -1983,24 +1983,38 @@ discription: embed.Message||" "
 
 },
  dashboardOn(op){
+let option = {
+ bot: client,
+ serverCount: client.guilds.size,
+ memberCount: client.users.size,
+ channelCount: client.channels.size,
+ emojiCount: client.emoji.size
+};
 client.on("ready", async () => {
  //Startup
 client.appInfo = await client.fetchApplication();
   setInterval(async () => {
     client.appInfo = await client.fetchApplication();
   }, op.time);
-  require(op.fileName)(client); 
+  require(op.fileName)(option); 
   console.log("✔️ | success dashboard on");
 });
 },
  eventHeader(op){
+let option = {
+ bot: client,
+ serverCount: client.guilds.size,
+ memberCount: client.users.size,
+ channelCount: client.channels.size,
+ emojiCount: client.emoji.size
+};
 fs.readdir(op.name+"/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
         const event = require(op.name+`/${file}`);
         let eventName = file.split(".")[0];
         console.log(`👌 Event loaded: ${eventName}`);
-        client.on(eventName.replace("joinMember", "guildMemberAdd").replace("leaveMember", "guildMemberRemove").replace("start", "ready"), event.bind(null, client));
+        client.on(eventName.replace("joinMember", "guildMemberAdd").replace("leaveMember", "guildMemberRemove").replace("start", "ready"), event.bind(null, option));
         delete require.cache[require.resolve(op.name+`/${file}`)];
     });
 });
