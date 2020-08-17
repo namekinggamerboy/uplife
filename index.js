@@ -36,7 +36,11 @@ version: require("./package.json").version,
 
 randomNum(min, max) {
 		return Math.floor(Math.random() * (max - min)) + min;
-	},
+},
+
+format(oldTime, format){
+ return moment.duration(oldTime).format(format);
+},
 
 printDate(pdate, isLongDate){
         let monthNames = [
@@ -203,7 +207,7 @@ color: 0x00ff00
 const message = msg;
     
     if (msg.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
-      msg.channel.send({ embed:{ title: "My prefix in this server is set to: `"+prefix+"`\nTo reset to default execute `"+Prefix+"reset-prefix` command!", color: 0x0022ff}});
+      msg.channel.send({ embed:{ title: "My prefix in this server is set to: `"+prefix+"`\nTo reset to default execute `"+Prefix+"reset-prefix` command!" }});
     }
     if (!msg.content.startsWith(prefix)) return;
     if(op.util === "true"){
