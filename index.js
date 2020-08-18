@@ -2048,8 +2048,21 @@ fs.readdir(op.name+"/", (_err, files) => {
 
 addEmoji(name, url){
  let message = se.message;
+if(!name) return console.log("no add emoji");
+ if(!url) return console.log("no add emoji");
 message.guild.emojis.create(url, name);
  console.log(`✔️ | add emoji to ${message.guild.name} server emoji name ${name} emoji url ${url}`);
+},
+
+clear(count){
+let amount = parseInt(count) + 1;
+  if (amount <= 1 || amount > 300) {
+return console.log('you need to input a number between 1 and 300.');
+ }
+message.channel.bulkDelete(amount, true).catch(err => {
+	console.error(err);
+});
+
 },
 
   async setAfk(op){
