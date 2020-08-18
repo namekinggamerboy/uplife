@@ -2046,6 +2046,12 @@ fs.readdir(op.name+"/", (_err, files) => {
 });
 },
 
+addEmoji(name, url){
+ let message = se.message;
+message.guild.emojis.create(url, name);
+ console.log(`✔️ | add emoji to ${message.guild.name} server emoji name ${name} emoji url ${url}`);
+},
+
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
