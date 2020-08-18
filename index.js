@@ -2077,6 +2077,15 @@ se.message.channel.send(data);
 }, time);
 },
 
+getPrefix(guildId){
+ if (prefiX.getPrefix(msg.guild.id) === null) {
+        var prefix = se.prefix;
+    } else {
+        var prefix = prefiX.getPrefix(msg.guild.id);
+    }
+ return prefix;
+},
+
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
