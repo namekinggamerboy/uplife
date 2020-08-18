@@ -2070,6 +2070,12 @@ colorRole(name, color){
 
   role.edit({color: color}).then(() => console.log("change role color to -"+ color)).catch((err) => console.log(err));
 },
+ 
+replyIn(time, data){
+setTimeout(() => {
+data
+}, time);
+},
 
   async setAfk(op){
     let message = op.msg;
