@@ -2078,10 +2078,10 @@ se.message.channel.send(data);
 },
 
 getPrefix(guildId){
- if (prefiX.getPrefix(msg.guild.id) === null) {
+ if (prefiX.getPrefix(guildId) === null) {
         var prefix = se.prefix;
     } else {
-        var prefix = prefiX.getPrefix(msg.guild.id);
+        var prefix = prefiX.getPrefix(guildId);
     }
  return prefix;
 },
