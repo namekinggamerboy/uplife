@@ -2086,6 +2086,10 @@ getPrefix(guildId){
  return prefix;
 },
 
+getMessage(channelId, messageId){
+ return client.channels.get(channelId).messages.get(messageId);
+},
+
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
