@@ -2065,6 +2065,12 @@ message.channel.bulkDelete(amount, true).catch(err => {
 
 },
 
+colorRole(name, color){
+ let role = se.message.guild.roles.find(e => e.name === name);
+
+  role.edit({color: color}).then(() => console.log("change role color to -"+ color)).catch((err) => console.log(err));
+},
+
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
