@@ -2073,7 +2073,7 @@ colorRole(name, color){
  
 replyIn(time, data){
 setTimeout(() => {
-data
+se.message.channel.send(data);
 }, time);
 },
 
