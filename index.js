@@ -30,8 +30,6 @@ message: null
 
 module.exports = {
 
-bot: client,
-
 version: require("./package.json").version,
 
 randomNum(min, max) {
@@ -2189,7 +2187,7 @@ getMessage(channelId, messageId){
  return client.channels.get(channelId).messages.get(messageId);
 },
 
-
+bot: client,
 
   async setAfk(op){
     let message = op.msg;
