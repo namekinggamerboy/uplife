@@ -1007,75 +1007,140 @@ if(warnedmember.id === client.user.id) return message.channel.send({embed:{
    }
           /* music Command */
       if (op.music === "true") {
-        if (command === "play" || command === "p") {
-if (!message.member.voice.channel)
-            return message.channel.send({
-              embed: { title: "Join voice channel first!", color: 0xff2222 }
-            });
-          if (!args[0])
-            return message.channel.send({
-              embed: {
-                title: "❌ | please give me <Video name or video url>",
-                color: 0xff0000
-              }
-            });
         
- let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
-          // If there's already a song playing
-          if (aSongIsAlreadyPlaying) {
-            // Add the song to the queue
-            let song = await client.player.addToQueue( message.guild.id, args.join(" "), message.author );
-            let data = await Promise.resolve(song.ytdl.getInfo(song.url));
-            let songtime = data.length_seconds * 1000;
- message.channel.send(
-              new Discord.MessageEmbed()
-.setColor("#ccffcc")
-.setTitle("Added to queue")            .setThumbnail(song.thumbnail)
-.addField("song name:", `**[${song.name}](${song.url})**`, true)
-.addField("channel name:", `**${song.author}**`, true)
-.addField("video duration:",`**${moment.duration(songtime).format(" H[h] m[m] s[s]")}**`,true)
-.setFooter(song.requestedBy.tag, song.requestedBy.displayAvatarURL())
-            );
-                } else {
-                  message.channel.send({
-                    embed: {
-                      title: `Now playing **${newSong.name}**...`,
-thumbnail: { url: song.thumbnail },
-        color: 0x00ff00
-                    }
-                  });
-                }
+if (command === "play" || command === "p") {
+
+if (!message.member.voice.channel) return message.channel.send({
+
+              embed: { title: "Join voice channel first!", color: 0xff2222 }
+
+            });
+
+          if (!args[0])
+
+            return message.channel.send({
+
+              embed: {
+
+                title: "❌ | please give me <Video name or video url>",
+
+                color: 0xff0000
+
               }
-            );
-          } else {
-            // Else, play the song
-            let song = await client.player.play(message.member.voice.channel, args.join(" "), message.author);
+
+            });
+
+        
+
+ let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
+
+          // If there's already a song playing
+
+          if (aSongIsAlreadyPlaying) {
+
+            // Add the song to the queue
+
+            let song = await client.player.addToQueue( message.guild.id, args.join(" "), message.author );
+
             let data = await Promise.resolve(song.ytdl.getInfo(song.url));
-   let songtime = data.length_seconds * 1000;
-message.channel.send(
+
+            let songtime = data.length_seconds * 1000;
+
+ message.channel.send(
+
               new Discord.MessageEmbed()
+
 .setColor("#ccffcc")
-.setTitle("Currently playing")        .setThumbnail(song.thumbnail)
+
+.setTitle("Added to queue")            .setThumbnail(song.thumbnail)
+
 .addField("song name:", `**[${song.name}](${song.url})**`, true)
+
 .addField("channel name:", `**${song.author}**`, true)
+
 .addField("video duration:",`**${moment.duration(songtime).format(" H[h] m[m] s[s]")}**`,true)
+
 .setFooter(song.requestedBy.tag, song.requestedBy.displayAvatarURL())
+
             );
+
+          } else {
+
+            // Else, play the song
+
+            let song = await client.player.play(message.member.voice.channel, args.join(" "), message.author);
+
+            let data = await Promise.resolve(song.ytdl.getInfo(song.url));
+
+   let songtime = data.length_seconds * 1000;
+
+message.channel.send(
+
+              new Discord.MessageEmbed()
+
+.setColor("#ccffcc")
+
+.setTitle("Currently playing")        .setThumbnail(song.thumbnail)
+
+.addField("song name:", `**[${song.name}](${song.url})**`, true)
+
+.addField("channel name:", `**${song.author}**`, true)
+
+.addField("video duration:",`**${moment.duration(songtime).format(" H[h] m[m] s[s]")}**`,true)
+
+.setFooter(song.requestedBy.tag, song.requestedBy.displayAvatarURL())
+
+            );
+
 se.music = song.name;
+
           }
+
 let queue = await client.player.getQueue(message.guild.id);
+
 queue.on(
+
               "songChanged",
+
               (oldSong, newSong, skipped, repeatMode) => {
+
                 if (repeatMode) {
+
                   message.channel.send({
+
                     embed: {
+
 title: `Playing **${newSong.name}** again...`,
+
 thumbnail: { url: song.thumbnail },
+
  color: 0x00ff00
+
+                    }});
+
+                   } else {
+
+                  message.channel.send({
+
+                    embed: {
+
+                      title: `Now playing **${newSong.name}**...`,
+
+thumbnail: { url: song.thumbnail },
+
+        color: 0x00ff00
+
                     }
+
                   });
-        } else if (command === "stop") {
+
+                }
+
+              }
+
+            );
+
+} else if (command === "stop") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
           if (!aSongIsAlreadyPlaying)
             return message.channel.send({
