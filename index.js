@@ -2037,10 +2037,11 @@ let option = {
 fs.readdir(op.name+"/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
-        const event = require(op.name+`/${file}`);
+        const event = new (require(op.name+`/${file}`))(client);
         let eventName = file.split(".")[0];
         console.log(`👌 Event loaded: ${eventName}`);
-        client.on(eventName.replace("joinMember", "guildMemberAdd").replace("leaveMember", "guildMemberRemove").replace("start", "ready"), event.bind(null, option));
+        client.on(eventName.replace("joinMember", "guildMemberAdd").replace("leaveMember", "guildMemberRemove").replace("start", "ready"), (...args) => event.run(...args));		
+        //client.on(eventName, event.bind(null, option));
         delete require.cache[require.resolve(op.name+`/${file}`)];
     });
 });
@@ -2063,6 +2064,38 @@ message.channel.bulkDelete(amount, true).catch(err => {
 	console.error(err);
 });
 
+},
+
+getUserMention(mention) {
+	if (!mention) return;
+	if (mention.startsWith('<@') && mention.endsWith('>')) {
+		mention = mention.slice(2, -1);
+		if (mention.startsWith('!')) {
+			mention = mention.slice(1);
+		}
+		return client.users.get(mention);
+	}
+},
+getEmojiMention(mention) {
+	if (!mention) return;
+if (mention.startsWith('<a') && mention.endsWith('>')) {
+		mention = mention.slice(2, -1);
+
+		/* if (mention.startsWith('!')) {
+			mention = mention.slice(1);
+		} */
+
+		return client.emojis.get(mention);
+	} else 
+	if (mention.startsWith('<') && mention.endsWith('>')) {
+		mention = mention.slice(2, -1);
+
+		/* if (mention.startsWith('!')) {
+			mention = mention.slice(1);
+		} */
+
+		return client.emojis.get(mention);
+	}
 },
 
 colorRole(name, color){
@@ -2089,6 +2122,8 @@ getPrefix(guildId){
 getMessage(channelId, messageId){
  return client.channels.get(channelId).messages.get(messageId);
 },
+
+
 
   async setAfk(op){
     let message = op.msg;
