@@ -1036,17 +1036,6 @@ if (!message.member.voice.channel)
 .addField("video duration:",`**${moment.duration(songtime).format(" H[h] m[m] s[s]")}**`,true)
 .setFooter(song.requestedBy.tag, song.requestedBy.displayAvatarURL())
             );
-            song.queue.on(
-              "songChanged",
-              (oldSong, newSong, skipped, repeatMode) => {
-                if (repeatMode) {
-                  message.channel.send({
-                    embed: {
-title: `Playing **${newSong.name}** again...`,
-thumbnail: { url: song.thumbnail },
- color: 0x00ff00
-                    }
-                  });
                 } else {
                   message.channel.send({
                     embed: {
@@ -1074,6 +1063,18 @@ message.channel.send(
             );
 se.music = song.name;
           }
+let queue = await client.player.getQueue(message.guild.id);
+queue.on(
+              "songChanged",
+              (oldSong, newSong, skipped, repeatMode) => {
+                if (repeatMode) {
+                  message.channel.send({
+                    embed: {
+title: `Playing **${newSong.name}** again...`,
+thumbnail: { url: song.thumbnail },
+ color: 0x00ff00
+                    }
+                  });
         } else if (command === "stop") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
           if (!aSongIsAlreadyPlaying)
@@ -1140,7 +1141,7 @@ array.push('▬');
               title: `Now playing`,
               description: `**[${song.name}](${
                 song.url
-              })**\n${array.join('')}duration-  **${moment
+              })**\n${array.join('')}\nduration-  **${moment
                 .duration(now)
                 .format(" H[h] m[m] s[s]")} / ${moment
                 .duration(songtime)
