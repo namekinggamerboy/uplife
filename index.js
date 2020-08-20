@@ -2101,7 +2101,7 @@ let option = {
 fs.readdir(op.name+"/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
-        const event = new (require(op.name+`/${file}`))(client);
+        const event = new (require(op.name+`/${file}`))(option);
         let eventName = file.split(".")[0];
         console.log(`👌 Event loaded: ${eventName}`);
         client.on(eventName.replace("joinMember", "guildMemberAdd").replace("leaveMember", "guildMemberRemove").replace("start", "ready"), (...args) => event.run(...args));		
@@ -2141,22 +2141,9 @@ getUserMention(mention) {
 	}
 },
 getEmojiMention(mention) {
-
 	if (!mention) return;
-
-	if (mention.startsWith('<') && mention.endsWith('>')) {
-
-		mention = mention.slice(2, -1);
-
-		 if (mention.startsWith('a')) {
-
-			mention = mention.slice(1);
-
-		} 
-
-		return client.emojis.get(mention);
-
-	}
+  let emoji = mention.replace("<", "").replace(">", "").replace(":", "").replace(":", "").replace("a", "").replace(",", "");
+   return client.emojis.get(emoji);
 
 },
 
