@@ -2174,6 +2174,28 @@ getMessage(channelId, messageId){
 
 bot: client,
 
+client.snipes = new Map();
+checkSnipe(op){
+client.on('messageDelete', function(message, channel){  
+  client.snipes.set(message.channel.id, {
+    content:message.content,
+    author:message.author.tag,
+    image:message.attachments.first() ? message.attachments.first().proxyURL : null
+  })  
+});
+},
+
+getSnipe(op){
+const msg = client.snipes.get(message.channel.id)
+    if(!msg) return message.channel.send("There are no deleted messages in this channel!")
+    const embed = new Discord.MessageEmbed()
+    .setAuthor(msg.author)
+    .setDescription(msg.content);
+    if(msg.image)embed.setImage(msg.image);
+    
+    message.channel.send(embed)
+},
+
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
