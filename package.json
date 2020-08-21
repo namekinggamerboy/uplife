@@ -18,7 +18,7 @@
     "moment": "*",
     "moment-duration-format": "*",
     "economy-uplife": "github:namekinggamerboy/economy-uplife#13699e30aeb5df217cfdad11e06aa6063059c94d",
-    "music-uplife": "github:namekinggamerboy/music-uplife#a147ae4290fddc31e872fe00c782f0c0ca311a78",
+    "music-uplife": "github:namekinggamerboy/music-uplife#b211ec7b4d9a76fdf309610a3c1cf93195930f92",
     "opusscript": "^0.0.7",
     "ms": "*",
     "discord-prefix": "^1.0.9",
