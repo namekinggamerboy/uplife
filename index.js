@@ -2182,7 +2182,7 @@ let option = {
 color: db.get(`color_${guildId}`),
 message: db.get(`msg_${guildId}`),
 channel: db.get(`channel_${guildId}`),
-image: db.get(`image_${guildId}`)
+image: db.get(`image_${guildId}`),
 prefix: prefix
 };
  return option;
