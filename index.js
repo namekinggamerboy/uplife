@@ -1139,6 +1139,16 @@ thumbnail: { url: song.thumbnail },
 
             );
 
+} else if(command === "seek"){
+let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
+          if (!aSongIsAlreadyPlaying)
+            return message.channel.send({
+              embed: { title: "nothing playing!", color: 0x0099ff }
+            });
+if(!args[0]) return message.channel.send({ embed:{ color: "#ff0000", title:"❌ | please give me seek time in ms" }});
+ let song = await client.player.nowPlaying(message.guild.id);
+         client.player.seek(message.member.voice.channel, song.url, message.author, args[0], message.guild.id);
+        /* message.channel.send({embed:{ color: "#00ff00", title: "`✔️` | successfully seek!"}}); */
 } else if (command === "stop") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
           if (!aSongIsAlreadyPlaying)
@@ -1148,6 +1158,7 @@ thumbnail: { url: song.thumbnail },
           client.player.stop(message.guild.id);
           message.channel.send({
             embed: { title: "✅ Music stopped!", color: 0x00ff00 }
+
           });
         } else if (command === "pause") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
@@ -1313,11 +1324,14 @@ client.on('guildMemberAdd', async member => {
   .setGuildName(member.guild.name)
   .setAvatar(member.user.displayAvatarURL({ format: 'png', size: 2048 }))
   .setOpacity("border", 0)
-  .setColor("username-box", "#D3D3D3")
-  .setColor("discriminator-box", "#D3D3D3")
-  .setColor("message-box", "#D3D3D3")
+  .setOpacity("username-box", 0)
+  .setOpacity("discriminator-box", 0)
+  .setOpacity("message-box", 0)
   .setColor("title", db.get(`color_${member.guild.id}`)||"#ccffcc")
-  .setColor("avatar", "#00ff00")
+  .setColor("avatar", "#00FF00")
+  .setColor("username", "#ffffff")
+  .setColor("discriminator", "#ffffff")
+  .setColor("message", "#ffffff")
   .setBackground(db.get(`image_${member.guild.id}`)||"https://static.tildacdn.com/tild3166-3465-4533-b163-323762393762/-/empty/database1.png")
   .toAttachment();
 let attachment = new Discord.MessageAttachment(image.toBuffer(), "welcome.png");
