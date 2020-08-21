@@ -3,6 +3,7 @@ const moment = require("moment");
 require("moment-duration-format");
 const client = new Discord.Client();
 client.afk = new Map();
+client.snipes = new Map();
 const ReactionRoleManager = require("reaction-role");
 const chalk = require('chalk');
 const economy = require("economy-uplife");
@@ -2174,7 +2175,6 @@ getMessage(channelId, messageId){
 
 bot: client,
 
-client.snipes = new Map();
 checkSnipe(op){
 client.on('messageDelete', function(message, channel){  
   client.snipes.set(message.channel.id, {
