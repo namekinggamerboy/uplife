@@ -1627,7 +1627,19 @@ async command(op) {
   get: db.get,
   
   set: db.set,
-  
+ 
+  push: db.push,
+
+  add: db.add,
+
+  subtract: db.subtract,
+
+  has: db.has,
+
+  delete: db.delete,
+
+  all: db.all,
+ 
   async msgdelete(o) {
    client.on("messageDelete", async msg => {
       let message = msg;
@@ -2160,13 +2172,20 @@ se.message.channel.send(data);
 }, time);
 },
 
-getPrefix(guildId){
+getInfo(guildId){
  if (prefiX.getPrefix(guildId) === null) {
         var prefix = se.prefix;
     } else {
         var prefix = prefiX.getPrefix(guildId);
     }
- return prefix;
+let option = {
+color: db.get(`color_${guildId}`),
+message: db.get(`msg_${guildId}`),
+channel: db.get(`channel_${guildId}`),
+image: db.get(`image_${guildId}`)
+prefix: prefix
+};
+ return option;
 },
 
 getMessage(channelId, messageId){
