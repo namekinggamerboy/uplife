@@ -2219,6 +2219,24 @@ const msg = client.snipes.get(op.channelId);
     se.message.channel.send(em);
 },
 
+checkSpam(op){
+const Antiraid = require("anti-raid");
+const setup = Antiraid.checkspam(client:{ 
+clientBot: bot,
+bot: true, // check bot spam true or false 
+warn: 3, //warn
+kick: 4, //4 warn = kick
+ban: 6, //6 warn = ban
+interval: 3200, //check spam await
+maxwarn: 7, //max warn count
+maxkick: 6, //max kick count
+maxban: 8, //max ban count
+permission: ["ADMINISTRATOR"], //role parmission
+verbose: false,
+ignoreduser: [se.owner] //not check spam this user id
+});
+}
+
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
