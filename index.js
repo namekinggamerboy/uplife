@@ -2198,7 +2198,7 @@ checkSnipe(op){
 client.on('messageDelete', message => {  
   client.snipes.set(message.channel.id, {
     content:message.content,
-    author:message.author.tag,
+    author:message.author,
     image:message.attachments.first() ? message.attachments.first().proxyURL : null
   });  
 });
@@ -2206,14 +2206,17 @@ console.log("✔️ | on Check snipe");
 },
 
 getSnipe(op){
-const msg = client.snipes.get(op);
-    if(!msg) return se.message.channel.send("There are no deleted messages in this channel!")
-    const embed = new Discord.MessageEmbed()
-    .setAuthor(msg.author)
+const msg = client.snipes.get(op.channelId);
+    if(!msg) return se.message.channel.send(op.errorMsg)
+    const em = new Discord.MessageEmbed()
+    .setAuthor(msg.author.tag)
+    .setColor(op.embedColor)
+    .setTimestamp()
+    .setFooter(op.embedFooterMsg, msg.author.displayAvatarURL())
     .setDescription(msg.content);
     if(msg.image)embed.setImage(msg.image);
     
-    se.message.channel.send(embed);
+    se.message.channel.send(em);
 },
 
   async setAfk(op){
