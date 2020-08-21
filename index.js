@@ -2140,10 +2140,10 @@ getUserMention(mention) {
 		return client.users.get(mention);
 	}
 },
-getEmojiMention(mention) {
+
+customEmoji(mention) {
 	if (!mention) return;
-  let emoji = mention.replace("<", "").replace(">", "").replace(":", "").replace(":", "").replace("a", "").replace(",", "");
-   return client.emojis.get(emoji);
+   return client.emojis.find(e => e.name === mention);
 
 },
 
@@ -2169,7 +2169,7 @@ getPrefix(guildId){
 },
 
 getMessage(channelId, messageId){
- return client.channels.get(channelId).messages.get(messageId);
+ return client.channels.get(channelId).messages.get(messageId)
 },
 
 bot: client,
@@ -2183,17 +2183,18 @@ client.on('messageDelete', function(message, channel){
     image:message.attachments.first() ? message.attachments.first().proxyURL : null
   })  
 });
+console.log("✔️ | on Check snipe");
 },
 
 getSnipe(op){
-const msg = client.snipes.get(message.channel.id)
-    if(!msg) return message.channel.send("There are no deleted messages in this channel!")
+const msg = client.snipes.get(op)
+    if(!msg) return se.message.channel.send("There are no deleted messages in this channel!")
     const embed = new Discord.MessageEmbed()
     .setAuthor(msg.author)
     .setDescription(msg.content);
     if(msg.image)embed.setImage(msg.image);
     
-    message.channel.send(embed)
+    se.message.channel.send(embed)
 },
 
   async setAfk(op){
