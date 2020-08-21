@@ -2221,7 +2221,7 @@ const msg = client.snipes.get(op.channelId);
 
 checkSpam(op){
 const Antiraid = require("anti-raid");
-const setup = Antiraid.checkspam(client:{ 
+const setup = Antiraid.checkspam({client:{ 
 clientBot: client,
 bot: true, // check bot spam true or false 
 warn: 3, //warn
@@ -2234,7 +2234,7 @@ maxban: 8, //max ban count
 permission: ["ADMINISTRATOR"], //role parmission
 verbose: false,
 ignoreduser: [`${se.owner}`] //not check spam this user id
-});
+}});
 }
 
   async setAfk(op){
