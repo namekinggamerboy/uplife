@@ -1819,6 +1819,7 @@ await rmsg.react(op.react4).catch();
     storage: op
        });
 client.reactionRoleManager = manager;
+se.rr = true;
 },
   async reactionRoleCreate(op){
   if(!se.rr) return console.log("❌ | please setup reactRole then create");
