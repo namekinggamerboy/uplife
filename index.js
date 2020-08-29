@@ -1039,7 +1039,7 @@ if (!message.member.voice.channel) return message.channel.send({
 
             // Add the song to the queue
 
-            let song = await client.player.addToQueue( message.guild.id, args.join(" "), message.author );
+            let song = await client.player.addToQueue( message.guild.id, args.join(" "), message.author, 0);
 
             let data = await Promise.resolve(song.ytdl.getInfo(song.url));
 
@@ -1067,7 +1067,7 @@ if (!message.member.voice.channel) return message.channel.send({
 
             // Else, play the song
 
-            let song = await client.player.play(message.member.voice.channel, args.join(" "), message.author);
+            let song = await client.player.play(message.member.voice.channel, args.join(" "), message.author, 0);
 
             let data = await Promise.resolve(song.ytdl.getInfo(song.url));
 
@@ -1158,7 +1158,7 @@ if(!args.join(" ")) return message.channel.send({ embed:{ color: "#ff0000", titl
          
        message.channel.send({embed:{ color: "#00ff00", title: "`✔️` | successfully seek to"+args.join(" ")+"!"}});
 
-       client.player.seek(message.member.voice.channel, song.url, message.author, pos);
+       client.player.play(message.member.voice.channel, song.url, message.author, pos);
 
 } else if (command === "stop") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
