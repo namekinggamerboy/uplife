@@ -1972,7 +1972,7 @@ let option = {
     console.log(`❌ | ${client.users.get(author).tag} not afk`);
   }
   },
-  async setStatus(op){
+  setStatus(op){
     if(!se.start) return console.log("❎ | please start then use setStatus");
   let guild;
   if(op.musicStatus = "true"){
@@ -1980,31 +1980,10 @@ let option = {
  }
    
 client.on('ready', () => {
-if(op.statusTime){
       setInterval(() => {
-        var d = Date();
-        let a = d.toString();
-        let l = op.gameName.replace("{guilds}", client.guilds.size).replace("{users}", client.users.size).replace("{realTime}", a).replace("{prefix}", se.prefix).replace("{music}", guild);
-  // let la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
-     
-        /* client.user.setActivity(la, { type: `${name}` }); */
-        client.user.setPresence({
-          activity: {
-            name: `${l}`,
-            type: `${op.type}`
-          },
-          status: `${op.stats}`
-        });
-      }, op.statusTime); 
-    } else {
-   setInterval(() => {
-         var d = Date();
-        let a = d.toString();
-let l = op.gameName.replace("{guilds}", client.guilds.size).replace("{users}", client.users.size).replace("{realTime}", a).replace("{prefix}", se.prefix).replace("{music}", guild);
-// let la = Math.floor(Math.random() * (l.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
-     
-        /* client.user.setActivity(la, { type: `${name}` }); */
-        client.user.setPresence({
+
+        let l = op.gameName.replace("{userCount}", client.users.size).replace("{guildCount}", client.guilds.size).replace("{channelCount}", client.channels.size).replace("{emojiCount}", client.emojis.size).replace("{music}", guild);
+   client.user.setPresence({
           activity: {
             name: `${l}`,
             type: `${op.type}`
@@ -2012,7 +1991,6 @@ let l = op.gameName.replace("{guilds}", client.guilds.size).replace("{users}", c
           status: `${op.stats}`
         });
       }, 120000); 
-}
 });
 },
 async deleteTicket(op){
@@ -2245,7 +2223,13 @@ reactions.forEach(async (m) => {
 
 },
 
-SetChangeStatus(ops, time) {
+setChangeStatus(ops, time) {
+    if(!se.start) return console.log("❎ | please start then use setStatus");
+  let guild;
+  if(op.musicStatus = "true"){
+   guild = se.music||"❌ | nothing playing..";
+ }
+
   if (isNaN(time) || time < 12000) return console.error(`API limitation reached: status can't change in lesser than 12 seconds.`)
   
   let y = 0,
@@ -2254,10 +2238,11 @@ SetChangeStatus(ops, time) {
   setInterval(async () => {
     if (y >= arr.length) y = 0
     
-    let code = arr[y][1].description.replace("{userCount}", client.users.size).replace("{guildCount}", client.guilds.size).replace("{channelCount}", client.channels.size).replace("{emojiCount}", client.emojis.size);
+    let code = arr[y][1].description.replace("{userCount}", client.users.size).replace("{guildCount}", client.guilds.size).replace("{channelCount}", client.channels.size).replace("{emojiCount}", client.emojis.size).replace("{music}", guild);
     
     if (code) { 
-      client.user.setActivity(code, { type: arr[y][1].type }) 
+      client.user.setActivity(code, { type: arr[y][1].type });
+      client.user.setStatus(arr[y][1].stats); 
     } 
     y++
   }, time);
