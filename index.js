@@ -2223,13 +2223,13 @@ reactions.forEach(async (m) => {
 
 },
 
-setChangeStatus(op, ops, time) {
+setChangeStatus(stats, music, ops, time) {
     if(!se.start) return console.log("❎ | please start then use setChangeStatus");
   let guild;
-  if(op.music = "true"){
+  if(music = "true"){
    guild = se.music||"❌ | nothing playing..";
  }
-client.user.setStatus(op.stats);
+client.user.setStatus(stats);
   if (isNaN(time) || time < 12000) return console.error(`API limitation reached: status can't change in lesser than 12 seconds.`)
   
   let y = 0,
