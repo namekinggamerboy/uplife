@@ -1155,8 +1155,10 @@ if(!args.join(" ")) return message.channel.send({ embed:{ color: "#ff0000", titl
            let pos = parseInt(args.join(" "));
             if (pos < 0) return message.channel.send(':x: The seeking point needs to be a positive number!');
             if (pos > data.length_seconds) return message.channel.send(`:x: The lenght of this song is ${data.length_seconds} seconds! You can't seek further than that!`);
-         client.player.seek(message.member.voice.channel, song.url, message.author, pos);
+         
        message.channel.send({embed:{ color: "#00ff00", title: "`✔️` | successfully seek to"+args.join(" ")+"!"}});
+
+       client.player.seek(message.member.voice.channel, song.url, message.author, pos);
 
 } else if (command === "stop") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
