@@ -145,7 +145,7 @@ client.on("disconnected", () => {
           " here bot Invite link: " +
           `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8 support server link: https://discord.gg/KmngEup`
       ));
-      if(op.gvieaway === "rue"){
+      if(op.gvieaway === "true"){
       giveaways.launch(client, {
         updateCountdownEvery: 5000,
         botsCanWin: false,
