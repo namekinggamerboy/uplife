@@ -1978,10 +1978,8 @@ let option = {
   if(op.musicStatus = "true"){
    guild = se.music||"❌ | nothing playing..";
  }
-   
-client.on('ready', () => {
-      setInterval(() => {
-
+ client.on('ready', () => { 
+    setInterval(() => {
         let l = op.gameName.replace("{userCount}", client.users.size).replace("{guildCount}", client.guilds.size).replace("{channelCount}", client.channels.size).replace("{emojiCount}", client.emojis.size).replace("{music}", guild);
    client.user.setPresence({
           activity: {
@@ -1990,7 +1988,7 @@ client.on('ready', () => {
           },
           status: `${op.stats}`
         });
-      }, 120000); 
+      }, 120000);
 });
 },
 async deleteTicket(op){
@@ -2223,13 +2221,13 @@ reactions.forEach(async (m) => {
 
 },
 
-setChangeStatus(stats, music, ops, time) {
+setChangeStatus(stats, ops, time) {
     if(!se.start) return console.log("❎ | please start then use setChangeStatus");
-  let guild;
-  if(music = "true"){
-   guild = se.music||"❌ | nothing playing..";
- }
+client.on('ready', () => {
 client.user.setStatus(stats);
+});
+  let guild = se.music||"❌ | nothing playing..";
+ 
   if (isNaN(time) || time < 12000) return console.error(`API limitation reached: status can't change in lesser than 12 seconds.`)
   
   let y = 0,
