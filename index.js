@@ -145,7 +145,7 @@ client.on("disconnected", () => {
           " here bot Invite link: " +
           `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8 support server link: https://discord.gg/KmngEup`
       ));
-      if(op.gvieaway === "true"){
+      if(op.giveaway === "true"){
       giveaways.launch(client, {
         updateCountdownEvery: 5000,
         botsCanWin: false,
@@ -157,7 +157,7 @@ client.on("disconnected", () => {
         embedColor: op.embedcolor,
         embedColorEnd: op.embedcolorend,
         reaction: `${op.reaction}`,
-        storage: `${op.giveawaystorage}`||__dirname+"/giveaways.json"
+        storage: `${op.giveawaystorage}`
       });
         }
 });
