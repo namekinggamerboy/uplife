@@ -1146,9 +1146,10 @@ let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
             return message.channel.send({
               embed: { title: "nothing playing!", color: 0x0099ff }
             });
-if(!args[0]) return message.channel.send({ embed:{ color: "#ff0000", title:"❌ | please give me seek time in ms" }});
+if(!args.join(" ")) return message.channel.send({ embed:{ color: "#ff0000", title:"❌ | please give me seek time in ms" }});
  let song = await client.player.nowPlaying(message.guild.id);
-         client.player.seek(message.member.voice.channel, song.url, message.author, args[0], message.guild.id);
+     client.player.stop(message.guild.id);
+         client.player.seek(message.member.voice.channel, song.url, message.author, parseInt(args.join(" ")));
        message.channel.send({embed:{ color: "#00ff00", title: "`✔️` | successfully seek!"}});
 
 } else if (command === "stop") {
