@@ -2246,7 +2246,7 @@ reactions.forEach(async (m) => {
 },
 
 SetChangeStatus(ops, time) {
-   const Status = require("./stats.js");
+   let Status = require("./stats.js");
     Status(client, ops, time) 
   },
 
