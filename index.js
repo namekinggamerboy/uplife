@@ -2237,6 +2237,18 @@ const msg = client.snipes.get(op.channelId);
     se.message.channel.send(em);
 },
 
+addReaction(react){
+
+reactions.forEach(async (m) => {
+      await se.message.react(m).catch(eerr => console.log("❌ | Failed to react with "+ reaction));
+   });
+
+},
+
+SetChangeStatus(ops, time) {
+    Status(client, ops, time) 
+  },
+
 checkSpam(op){
 const Antiraid = require("anti-raid");
 const setup = Antiraid.checkspam({client:{ 
