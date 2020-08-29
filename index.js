@@ -2223,7 +2223,7 @@ const msg = client.snipes.get(op.channelId);
 
 addReaction(react){
 
-reactions.forEach(async (m) => {
+react.forEach(async (m) => {
       await se.message.react(m).catch(eerr => console.log("❌ | Failed to react with "+ reaction));
    });
 
