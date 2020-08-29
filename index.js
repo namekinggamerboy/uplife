@@ -2204,7 +2204,7 @@ client.on('messageDelete', message => {
     image:message.attachments.first() ? message.attachments.first().proxyURL : null
   });  
 });
-console.log("✔️ | on Check snipe");
+console.log("🕵️ | Now Bot Check snipe messages and images");
 },
 
 getSnipe(op){
