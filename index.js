@@ -2145,16 +2145,16 @@ fs.readdir(op.name+"/", (_err, files) => {
 
 addEmoji(name, url){
  let message = se.message;
-if(!name) return console.log("no add emoji");
- if(!url) return console.log("no add emoji");
+if(!name) return console.log("❌ | no add emoji reson give me name");
+ if(!url) return console.log("❌ | no add emoji reason give me url");
 message.guild.emojis.create(url, name);
  console.log(`✔️ | add emoji to ${message.guild.name} server emoji name ${name} emoji url ${url}`);
 },
 
 clear(count){
 let amount = parseInt(count) + 1;
-  if (amount <= 1 || amount > 300) {
-return console.log('you need to input a number between 1 and 300.');
+  if (amount <= 1 || amount > 100000) {
+return console.log('you need to input a number between 1 and 100000.');
  }
 message.channel.bulkDelete(amount, true).catch(err => {
 	console.error(err);
@@ -2233,7 +2233,7 @@ client.on('messageDelete', message => {
     image:message.attachments.first() ? message.attachments.first().proxyURL : null
   });  
 });
-console.log("🕵️ | Now Bot Check snipe messages and images");
+console.log("🕵️ | Now Bot Check delete messages and images");
 },
 
 getSnipe(op){
