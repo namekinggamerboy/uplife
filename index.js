@@ -2291,6 +2291,8 @@ ignoreduser: [`${se.owner}`] //not check spam this user id
 });
 },
 
+message: se.message,
+
   async setAfk(op){
     let message = op.msg;
     let bot = client; 
