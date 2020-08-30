@@ -41,6 +41,20 @@ format(oldTime, format){
  return moment.duration(oldTime).format(format);
 },
 
+randomText(text){
+
+    let inside = text;
+
+    let texts = inside.split(";")
+
+    let t = texts[Math.floor(Math.random() * texts.length)]
+
+    let code = t;
+
+    return code
+
+},
+
 printDate(pdate, isLongDate){
         let monthNames = [
             "January", "February", "March",
