@@ -2170,7 +2170,19 @@ getUserMention(mention) {
 			mention = mention.slice(1);
 		}
 		return client.users.get(mention);
-	}
+	} else {
+     return mention;
+}
+},
+
+getEmojiMemtion(mention){
+     if(!mention) return;
+     if (mention.startsWith('<') && mention.endsWith('>')) {
+      mention = mention.replace("<", "").relace("a", "").replace(":", "").replace(">", "").split(":")[1];
+       
+		return client.emojis.get(mention);
+	} else {
+     return mention;
 },
 
 customEmoji(mention) {
