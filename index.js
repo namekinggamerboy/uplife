@@ -25,8 +25,8 @@ rr: false,
 youtubeapi: null,
 prefix: null,
 music: null,
-message: null
-  
+message: null,
+args: null
 }
 
 module.exports = {
@@ -53,6 +53,10 @@ randomText(text){
 
     return code
 
+},
+
+argsCheck(count, error){
+if(!se.args[count]) return messgae.channel.send(error);
 },
 
 printDate(pdate, isLongDate){
@@ -322,7 +326,8 @@ economy.start(client, Prefix);
     }
     if (!msg.content.startsWith(prefix)) return;
     const args = msg.content.slice(prefix.length).split(" ");
-    const command = args.shift().toLowerCase();
+   se.args = args;
+   const command = args.shift().toLowerCase();
     if(op.util === "true"){
     if (command === "userinfo") {
       let inline = true;
@@ -338,7 +343,7 @@ economy.start(client, Prefix);
         message.mentions.members.first() ||
         message.guild.members.get(args[0]) ||
         message.member;
-      let target = message.mentions.users.first() || message.author;
+      let target = message.mentions.users.first() || message.guild.members.get(args[0]) || message.author;
       let bot;
       if (member.user.bot === true) {
         bot = "✅ Yes";
