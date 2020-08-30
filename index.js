@@ -2183,6 +2183,7 @@ getEmojiMemtion(mention){
 		return client.emojis.get(mention);
 	} else {
      return mention;
+  }
 },
 
 customEmoji(mention) {
