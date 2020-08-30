@@ -1931,6 +1931,7 @@ let option = {
   guild: message.guild,
   guilds: client.guilds,
   author: message.author,
+  member: message.member,
   emojis: message.guild.emojis,
   mentionUser: message.mentions.users.first(),
   mentionChannel: message.mentions.channels.first(),
@@ -1962,7 +1963,7 @@ let option = {
   serverName: message.guild.name,
   serverAfkChannel: message.guild.afkChannel,
   serverId: message.guild.id,
-  serverVerificationLvl: message.guild.verificationLevel,
+  serverVerificationLevel: message.guild.verificationLevel,
   serverIcon: message.guild.icon
         ? `https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png?size=4096`
         : "https://discordemoji.com/assets/emoji/discordcry.png",
@@ -2290,8 +2291,6 @@ verbose: false,
 ignoreduser: [`${se.owner}`] //not check spam this user id
 });
 },
-
-message: se.message,
 
   async setAfk(op){
     let message = op.msg;
