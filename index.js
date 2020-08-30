@@ -1964,9 +1964,7 @@ let option = {
   serverId: message.guild.id,
   serverVerificationLevel: message.guild.verificationLevel,
   serverIcon: message.guild.iconURL(),
-  getBotInvite: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8`,
-  commandsCount: client.commands.map(e => e.command.name).length,
-  commandList: client.commands.map(e => "`"+e.command.name+"`").join(",")
+  getBotInvite: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8`
 };
           
   try {
