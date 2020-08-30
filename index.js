@@ -1951,6 +1951,7 @@ let option = {
   channelCount: message.guild.channels.size,
   roleCount: message.guild.roles.size,
   serverCount: client.guilds.size,
+  categoryCount: message.guild.channels.filter(ch => ch.type === "category").size,
   commandsCount: client.commands.map(e => e.command.name).length,
   messageLength: messageArray.length,
   checkAdmin: message.member.hasPermission("ADMINISTRATOR"),
@@ -1960,8 +1961,8 @@ let option = {
   serverRegion: message.guild.region,
   serverName: message.guild.name,
   serverAfkChannel: message.guild.afkChannel,
-  serverVerificationLevel : message.guild.verificationLevel,
   serverId: message.guild.id,
+  serverVerificationLvl: message.guild.verificationLevel,
   serverIcon: message.guild.icon
         ? `https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png?size=4096`
         : "https://discordemoji.com/assets/emoji/discordcry.png",
