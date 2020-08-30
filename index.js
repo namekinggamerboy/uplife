@@ -1953,7 +1953,6 @@ let option = {
   roleCount: message.guild.roles.size,
   serverCount: client.guilds.size,
   categoryCount: message.guild.channels.filter(ch => ch.type === "category").size,
-  commandsCount: client.commands.map(e => e.command.name).length,
   messageLength: messageArray.length,
   checkAdmin: message.member.hasPermission("ADMINISTRATOR"),
   randomUser: message.guild.members.filter(m => m.id !== message.author.id).random().user,
@@ -1964,10 +1963,9 @@ let option = {
   serverAfkChannel: message.guild.afkChannel,
   serverId: message.guild.id,
   serverVerificationLevel: message.guild.verificationLevel,
-  serverIcon: message.guild.icon
-        ? `https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png?size=4096`
-        : "https://discordemoji.com/assets/emoji/discordcry.png",
+  serverIcon: message.guild.iconURL(),
   getBotInvite: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8`,
+  commandsCount: client.commands.map(e => e.command.name).length,
   commandList: client.commands.map(e => "`"+e.command.name+"`").join(",")
 };
           
