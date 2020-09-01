@@ -1158,27 +1158,6 @@ thumbnail: { url: song.thumbnail },
 
             );
 
-} else if(command === "seek"){
-
-let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
-          if (!aSongIsAlreadyPlaying)
-            return message.channel.send({
-              embed: { title: "nothing playing!", color: 0x0099ff }
-            });
-if(!args.join(" ")) return message.channel.send({ embed:{ color: "#ff0000", title:"❌ | please give me seek time in ms" }});
- let song = await client.player.nowPlaying(message.guild.id);
-
-     client.player.stop(message.guild.id);
-
- let data = await Promise.resolve(song.ytdl.getInfo(song.url));
-           let pos = parseInt(args.join(" "));
-            if (pos < 0) return message.channel.send(':x: The seeking point needs to be a positive number!');
-            if (pos > data.length_seconds) return message.channel.send(`:x: The lenght of this song is ${data.length_seconds} seconds! You can't seek further than that!`);
-         
-       message.channel.send({embed:{ color: "#00ff00", title: "`✔️` | successfully seek to"+args.join(" ")+"!"}});
-
-       client.player.play(message.member.voice.channel, song.url, message.author, pos);
-
 } else if (command === "stop") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
           if (!aSongIsAlreadyPlaying)
