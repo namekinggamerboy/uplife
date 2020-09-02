@@ -33,6 +33,8 @@ module.exports = {
 
 version: require("./package.json").version,
 
+discord: Discord,
+
 randomNum(min, max) {
 		return Math.floor(Math.random() * (max - min)) + min;
 },
