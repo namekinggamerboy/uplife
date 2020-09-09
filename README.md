@@ -10,7 +10,7 @@
     <a href="https://nodei.co/npm/uplife-api/"><img src="https://nodei.co/npm/uplife-api.png?downloads=true&stars=true" alt="npm installnfo" /></a>
   </p>
 <br>
-<hr><br>
+<br>
 <h2><b>Whats New?</h2></b>
 <hr><br>
 
