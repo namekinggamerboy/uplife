@@ -1209,10 +1209,10 @@ thumbnail: { url: song.thumbnail },
             });
           let song = await client.player.nowPlaying(message.guild.id);
           let data = await Promise.resolve(song.ytdl.getInfo(song.url));
-          let songtime = data.length_seconds * 1000;       
+          let songtime = (data.length_seconds * 1000);       
           let queue = await client.player.getQueue(message.guild.id);
           let seek = queue.seek * 1000;
-          let now = seek+queue.connection.dispatcher.streamTime;
+          let now = (queue.connection.dispatcher.streamTime+seek);
         //let barlength = 30;
         let barlength = 15;
         let completedpercent = ((now / songtime) * barlength);
