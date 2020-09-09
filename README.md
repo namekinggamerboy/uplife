@@ -1,7 +1,8 @@
-<center>```js
+```
 npm install uplife-api 
-```</center>
-<br>
+```
+
+<div align="center">
  <br>
   <p>
     <a href="https://discord.gg/KmngEup"><img src="https://img.shields.io/discord/638943292242919455?color=7289da&logo=discord&logoColor=white" alt="Discord server" /></a>
@@ -33,3 +34,4 @@ npm install uplife-api
 <hr>
 More info API or support or daily New code info just join support server<br>
 <a href="https://discord.gg/KmngEup">CLICK ME</a>
+</div>
