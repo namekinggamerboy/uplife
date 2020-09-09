@@ -291,7 +291,7 @@ Op.addField(
 if(op.music === "true"){
         Op.addField(
           `Music COMMANDS`,
-          "`play`,`skip`,`stop`,`setvolume`,`nowplaying`,`loop-on`,`loop-off`,`queue`,`clear-queue`,`pause`,`resume`",
+          "`play`,`skip`,`stop`,`setvolume`,`nowplaying`,`loop-on`,`loop-off`,`queue`,`clear-queue`,`pause`,`seek`,`resume`",
           true
         )
 }
@@ -1279,7 +1279,7 @@ let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
  
   let so = await client.player.nowPlaying(message.guild.id);
         
-        let song = await client.player.seek(message.member.voice.channel, so.url, message.author, args[0]);
+        let song = await client.player.seek(message.member.voice.channel, so.url, message.author, message.guild.id, args[0]);
         message.channel.send({ embed:{ title:` Success seek to ${args[0]} ${song.name}! - Requested by ${song.requestedBy}`, color: "#00ff00" }});
   
         } else if (command === "skip") {
