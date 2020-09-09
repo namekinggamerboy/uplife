@@ -1,4 +1,4 @@
-<center>``` npm install uplife-api ```</center>
+<center>` npm install uplife-api `</center>
 <br>
  <br>
   <p>
