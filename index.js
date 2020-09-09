@@ -1060,7 +1060,7 @@ if (!message.member.voice.channel) return message.channel.send({
 
             // Add the song to the queue
 
-            let song = await client.player.addToQueue( message.guild.id, args.join(" "), message.author, 0);
+            let song = await client.player.addToQueue( message.guild.id, args.join(" "), message.author);
 
             let data = await Promise.resolve(song.ytdl.getInfo(song.url));
 
@@ -1209,9 +1209,10 @@ thumbnail: { url: song.thumbnail },
             });
           let song = await client.player.nowPlaying(message.guild.id);
           let data = await Promise.resolve(song.ytdl.getInfo(song.url));
-          let songtime = data.length_seconds * 1000;
+          let songtime = data.length_seconds * 1000;       
           let queue = await client.player.getQueue(message.guild.id);
-          let now = queue.connection.dispatcher.streamTime;
+          let seek = queue.seek * 1000;
+          let now = seek+queue.connection.dispatcher.streamTime;
         //let barlength = 30;
         let barlength = 15;
         let completedpercent = ((now / songtime) * barlength);
@@ -1248,7 +1249,7 @@ array.push('▬');
           let song = await client.player.nowPlaying(message.guild.id);
           message.channel.send({
             embed: {
-              title: `${song.name} will be repeated indefinitely!`,
+              title: `${song.name} will be repeated indefinitely![loop-on]`,
               color: "RANDOM"
             }
           });
@@ -1264,10 +1265,23 @@ array.push('▬');
           let song = await client.player.nowPlaying(message.guild.id);
           message.channel.send({
             embed: {
-              title: `${song.name}  will no longer be repeated indefinitely!`,
+              title: `loop-off`,
               color: "RANDOM"
             }
           });
+        } else if(command === "seek"){
+let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
+          if (!aSongIsAlreadyPlaying)
+            return message.channel.send({
+              embed: { title: "nothing playing!", color: 0x0099ff }
+            });
+      if(!args[0]) return message.channel.send({ embed:{ title:"please give me seek time[second]", color:"#ff0000" }});
+ client.player.stop(message.guild.id);
+  let so = await client.player.nowPlaying(message.guild.id);
+        
+        let song = await client.player.play(message.member.voice.channel, so.url, message.author, args[0]);
+        message.channel.send({ embed:{ title:` Success seek to ${args[0]} ${song.name}! - Requested by ${song.requestedBy}`, color: "#00ff00" }});
+  
         } else if (command === "skip") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
           if (!aSongIsAlreadyPlaying)
