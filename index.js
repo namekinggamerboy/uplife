@@ -1088,7 +1088,7 @@ if (!message.member.voice.channel) return message.channel.send({
 
             // Else, play the song
 
-            let song = await client.player.play(message.member.voice.channel, args.join(" "), message.author, 0);
+            let song = await client.player.play(message.member.voice.channel, args.join(" "), message.author);
 
             let data = await Promise.resolve(song.ytdl.getInfo(song.url));
 
@@ -1276,10 +1276,10 @@ let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
               embed: { title: "nothing playing!", color: 0x0099ff }
             });
       if(!args[0]) return message.channel.send({ embed:{ title:"please give me seek time[second]", color:"#ff0000" }});
- client.player.stop(message.guild.id);
+ 
   let so = await client.player.nowPlaying(message.guild.id);
         
-        let song = await client.player.play(message.member.voice.channel, so.url, message.author, args[0]);
+        let song = await client.player.seek(message.member.voice.channel, so.url, message.author, args[0]);
         message.channel.send({ embed:{ title:` Success seek to ${args[0]} ${song.name}! - Requested by ${song.requestedBy}`, color: "#00ff00" }});
   
         } else if (command === "skip") {
