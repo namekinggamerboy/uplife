@@ -10,4 +10,22 @@
     <a href="https://nodei.co/npm/uplife-api/"><img src="https://nodei.co/npm/uplife-api.png?downloads=true&stars=true" alt="npm installnfo" /></a>
   </p>
 <br>
-<h2><b></h2></b>
+<hr><br>
+<h2><b>Whats New?</h2></b>
+<hr><br>
+
+• Add new giveaway and music command and Update All commands<br>
+• Now discord.js packhe or client options<br>
+• offical document<br>
+• randomNum and randomText option<br>
+• mention emoji or mention use data option<br>
+• event harder<br>
+• convert ms to time<br>
+• new change status or non change status option<br>
+• dashboard on option<br>
+• more powerful<br>
+• fix some bugs<br>
+<br>
+<hr>
+More info API or support or daily New code info just join support server<br>
+<a href="https://discord.gg/KmngEup">CLICK ME</a>
