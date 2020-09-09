@@ -1,4 +1,6 @@
- <br />
+<center>``` npm install uplife-api ```</center>
+<br>
+ <br>
   <p>
     <a href="https://discord.gg/KmngEup"><img src="https://img.shields.io/discord/638943292242919455?color=7289da&logo=discord&logoColor=white" alt="Discord server" /></a>
     <a href="https://www.npmjs.com/package/uplife-api"><img src="https://img.shields.io/npm/v/uplife-api.svg?maxAge=3600" alt="NPM version" /></a>
