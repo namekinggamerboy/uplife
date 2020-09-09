@@ -12,7 +12,7 @@
 <br>
 <br>
 <h2><b>Whats New?</h2></b>
-<hr><br>
+<br>
 
 • Add new giveaway and music command and Update All commands<br>
 • Now discord.js packhe or client options<br>
@@ -22,7 +22,7 @@
 • event harder<br>
 • convert ms to time<br>
 • new change status or non change status option<br>
-• dashboard on option<br>
+• dashboardon and snipe option<br>
 • more powerful<br>
 • fix some bugs<br>
 <br>
