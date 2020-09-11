@@ -7,25 +7,36 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namekinggamerboy/uplife.git"
+  },
+  "keywords": [
+    "Discord bot",
+    "Uplife",
+    "hosting",
+    "Hosting api"
+  ],
   "author": "namekinggamerboy",
   "license": "ISC",
   "dependencies": {
-    "reaction-role": "github:namekinggamerboy/reaction-role#da3389cdfb8f2d3ea2202264b3cc0023fdee2160",
+    "reaction-role": "2.1.0",
     "chalk": "4.0.0",
-    "discord.js": "github:discordjs/discord.js#fe7df708e44e0280dfaf0f8e457b154781bb5140",
-    "discord-giveaways": "github:namekinggamerboy/discord-giveaways#4439acef211bad6bb1146f23f348b5af3fe4f465",
+    "discord.js": "12.3.1",
+    "discord-giveaways": "4.2.1",
     "moment": "*",
     "moment-duration-format": "*",
     "economy-uplife": "github:namekinggamerboy/economy-uplife#13699e30aeb5df217cfdad11e06aa6063059c94d",
     "music-uplife": "github:namekinggamerboy/music-uplife#b1027a75293a5e411699d971795c89d4b36a9355",
     "ms": "*",
-    "discord-prefix": "^1.0.9",
     "quick.db": "^7.1.1",
     "discord-canvas": "^1.1.0",
     "snekfetch": "^3.6.1",
     "anti-raid": "1.0.8",
     "superagent": "^3.8.3"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   },
   "devDependencies": {
     "eslint": "^7.0.0"
