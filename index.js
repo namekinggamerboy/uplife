@@ -58,7 +58,7 @@ randomText(text){
 },
 
 argsCheck(count, error){
-if(!se.args[count]) return messgae.channel.send(error);
+if(!se.args[count]) return se.messgae.channel.send(error);
 },
 
 printDate(pdate, isLongDate){
@@ -272,7 +272,7 @@ if(msg.content === prefix + "invite") {
       let Op = new Discord.MessageEmbed()
         Op.setTitle(`help Command | my prefix: ${prefix}`)
  if(op.mod === "true"){       
-Op.addField(`MOD COMMANS`, "`setprefix`,`kick`,`ban`,`warn`,`clear`,`unban`,`mute`,`unmute`", true)
+Op.addField(`MOD COMMANDS`, "`setprefix`,`kick`,`ban`,`warn`,`clear`,`unban`,`mute`,`unmute`", true)
         }
 if(op.util === "true"){
 Op.addField(
@@ -301,7 +301,7 @@ if(op.giveaway === "true"){
 if(op.welcomer === "true"){
        Op.addField(`WELCOMER COMMANDS`, "`setimage`,`setchannel`,`setcolor`,`setmessage`,`weltest`,`disable-welcomer`", true)
     }
-        Op.addField(`ONWER COMMANDS`, "`serverlist`,`restart`", true)
+        Op.addField(`OWNER COMMANDS`, "`serverlist`,`restart`", true)
     /*    if(client.commands){
         Op.addField(`CUSTOM COMMANDS`, client.commands.map(e => "`"+e.command.name+"`").join(","), true)
       } */
