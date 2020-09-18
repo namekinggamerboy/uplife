@@ -2109,10 +2109,10 @@ let option = {
 };
 client.on("ready", async () => {
  //Startup
-client.appInfo = await client.fetchApplication();
+/* client.appInfo = await client.fetchApplication();
   setInterval(async () => {
     client.appInfo = await client.fetchApplication();
-  }, op.time);
+  }, op.time); */
   require(op.fileName)(option); 
   console.log("✔️ | success dashboard on");
 });
@@ -2170,7 +2170,7 @@ getUserMention(mention) {
 }
 },
 
-getEmojiMemtion(mention){
+getEmojiMention(mention){
      if(!mention) return;
      if (mention.startsWith('<') && mention.endsWith('>')) {
       mention = mention.replace("<", "").relace("a", "").replace(":", "").replace(">", "").split(":")[1];
