@@ -23,6 +23,7 @@
     "reaction-role": "2.1.0",
     "chalk": "4.0.0",
     "discord.js": "12.3.1",
+    "discord-prefix": "1.1.0",
     "discord-giveaways": "4.2.1",
     "moment": "*",
     "moment-duration-format": "*",
