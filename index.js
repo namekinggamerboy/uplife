@@ -1132,7 +1132,7 @@ queue.on(
 
 title: `Playing **${newSong.name}** again...`,
 
-thumbnail: { url: song.thumbnail },
+thumbnail: { url: newSong.thumbnail },
 
  color: 0x00ff00
 
@@ -1146,7 +1146,7 @@ thumbnail: { url: song.thumbnail },
 
                       title: `Now playing **${newSong.name}**...`,
 
-thumbnail: { url: song.thumbnail },
+thumbnail: { url: newSong.thumbnail },
 
         color: 0x00ff00
 
