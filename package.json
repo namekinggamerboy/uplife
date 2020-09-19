@@ -1,6 +1,6 @@
 {
   "name": "uplife-api",
-  "version": "2.0.13",
+  "version": "2.0.14-beta",
   "description": "Uplife api give best discord bot hosting script",
   "main": "index.js",
   "scripts": {
