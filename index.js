@@ -1114,11 +1114,7 @@ message.channel.send(
 
 se.music = song.name;
 
-          }
-
-let queue = await client.player.getQueue(message.guild.id);
-
-queue.on(
+song.queue.on(
 
               "songChanged",
 
@@ -1159,6 +1155,8 @@ thumbnail: { url: newSong.thumbnail },
               }
 
             );
+          }
+
 
 } else if (command === "stop") {
           let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
