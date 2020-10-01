@@ -30,6 +30,7 @@ npm install uplife-api
 • dashboardon and snipe option<br>
 • more powerful<br>
 • fix some bugs<br>
+• uplife-api Command option [very easy]<br>
 <br>
 <hr>
 More info API or support or daily New code info just join support server<br>
