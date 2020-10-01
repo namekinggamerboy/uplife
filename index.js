@@ -216,7 +216,7 @@ color: 0x00ff00
     }
 const message = msg;
     
-    if(op.ping){}
+    if(op.ping){
     if (msg.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
       msg.channel.send({ embed:{ color:op.pingColor, title: "My prefix in this server is set to: `"+prefix+"`\nTo reset to default execute `"+Prefix+"reset-prefix` command!" }});
     }
