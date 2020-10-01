@@ -20,7 +20,7 @@ npm install uplife-api
 <br>
 
 • Add new giveaway and music command and Update All commands<br>
-• Now discord.js packhe or client options<br>
+• Now discord.js package or client options<br>
 • offical document<br>
 • randomNum and randomText option<br>
 • mention emoji or mention use data option<br>
