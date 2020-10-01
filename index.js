@@ -112,25 +112,6 @@ if (!token)
     return console.log(chalk.bold.red(
       "[uplife-api]{type: error} ⚠️: make sure your give me bot token or invite bot token"
     ));
- /* if (!game)
-    return console.log(chalk.bold.red(
-      "[uplife-api]{type: error} ⚠️: make sure your give me bot game"
-    ));
-
-  if (!name)
-    return console.log(chalk.bold.red(
-      "[uplife-api]{type: error} ⚠️: make sure your give me bot game playing status"
-    ));
-
-  if (!stats)
-    return console.log(chalk.bold.red(
-      "[uplife-api]{type: error} ⚠️: make sure your give me bot status"
-    ));*/
-    
- /*  if (!status)
-    return console.log(chalk.bold.red(
-      "[uplife-api]{type: error} ⚠️: make sure your give me status"
-    )); */
 
   if (!Prefix)
     return console.log(chalk.bold.red(
@@ -1291,14 +1272,6 @@ let aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
             embed: { title: `${song.name} skipped!`, color: 0xff00ff }
           });
         } else
- /* if (command === "queue" || command === "q") {
-          let queue = await client.player.getQueue(message.guild.id);
-          if (!queue)
-            return msg.channel.send({
-              embed: { title: "nothing playing!", color: 0x0099ff }
-            });
-          message.channel.send(new Discord.MessageEmbed().setTitle(""));
-        } else*/
 
  if (command === "queue" || command === "q") {
           let queue = await client.player.getQueue(message.guild.id);
@@ -1377,7 +1350,7 @@ let ch1 = member.guild.channels.get(ch);
   client.login(token).catch( );
     se.start = true;
 },
-async command(op) {
+async Customcommand(op) {
    if(!se.start) return console.log("❌ | please start script then use");
     client.on("message", async msg => {
       if (msg.channel.type == "dm") return;
@@ -1406,8 +1379,10 @@ async command(op) {
           var ssl = message.channel;
         }
         if (op.msgreact) {
-          let react = client.emojis.find(e => e.name === op.msgreact);
+            op.msgreact.map(r => {
+          let react = client.emojis.find(e => e.name === r);
           msg.react(react.id);
+          });
         }
         if (op.msgdelete) {
           msg.delete({ timeout: op.msgdelete || 10 });
@@ -1438,9 +1413,11 @@ async command(op) {
             )
             .then(function (message){
               if (op.botmsgreact) {
-                let react = client.emojis.find(e => e.name === op.botmsgreact);
-                message.react(react.id);
-              }
+            op.botmsgreact.map(r => {
+          let react = client.emojis.find(e => e.name === r);
+          message.react(react.id);
+          });
+        }
               if (op.botmsgdelete) {
                 message.delete({ timeout: op.botmsgdelete || 10 });
               }
@@ -1531,9 +1508,11 @@ async command(op) {
             .send(ha)
             .then(function (message){
               if (op.botmsgreact) {
-                let react = client.emojis.find(e => e.name === op.botmsgreact);
-                message.react(react.id);
-              }
+            op.botmsgreact.map(r => {
+          let react = client.emojis.find(e => e.name === r);
+          message.react(react.id);
+          });
+        }
               if (op.botmsgdelete) {
                 message.delete({ timeout: op.botmsgdelete || 10 });
               }
@@ -1565,10 +1544,12 @@ async command(op) {
                   .join(args.join(" "))
             )
             .then(function (message){
-              if (op.botmsgreact) {
-                let react = client.emojis.find(e => e.name === op.botmsgreact);
-                message.react(react.id);
-              }
+               if (op.botmsgreact) {
+            op.botmsgreact.map(r => {
+          let react = client.emojis.find(e => e.name === r);
+          message.react(react.id);
+          });
+        }
               if (op.botmsgdelete) {
                 message.delete({ timeout: op.botmsgdelete || 10 });
               }
@@ -1600,10 +1581,12 @@ async command(op) {
           ssl
             .send(attachment)
             .then(function (message){
-              if (op.botmsgreact) {
-                let react = client.emojis.find(e => e.name === op.botmsgreact);
-                message.react(react.id);
-              }
+               if (op.botmsgreact) {
+            op.botmsgreact.map(r => {
+          let react = client.emojis.find(e => e.name === r);
+          message.react(react.id);
+          });
+        }
               if (op.botmsgdelete) {
                 message.delete({ timeout: op.botmsgdelete || 10 });
               }
@@ -1937,8 +1920,6 @@ let option = {
   prefix: se.prefix,
   ping: client.ws.ping,
   allMembersCount: message.guild.memberCount,
-  BotTyping: message.channel.startTyping(),
-  BotStopTyping: message.channel.stopTyping(),
   attachment: message.attachments.first(),
   fullMessage: messageArray,
   emoteCount: message.guild.emojis.size,
