@@ -2234,14 +2234,14 @@ getSnipe(op){
 const msg = client.snipes.get(op.channelId);
     if(!msg) return se.message.channel.send(op.errorMsg)
     const em = new Discord.MessageEmbed()
-    .setAuthor(msg.author.tag)
+    .setAuthor(op.embedAuthor.replace("{usertag}", msg.author.tag))
     .setColor(op.embedColor)
     .setTimestamp()
     .setFooter(op.embedFooterMsg, msg.author.displayAvatarURL())
     .setDescription(msg.content);
-    if(msg.image)embed.setImage(msg.image);
-    
+    if(msg.image)em.setImage(msg.image);
     se.message.channel.send(em);
+   client.snipes.delete(op.channelId);
 },
 
 addReaction(react){
