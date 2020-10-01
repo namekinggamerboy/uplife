@@ -26,7 +26,8 @@ youtubeapi: null,
 prefix: null,
 music: null,
 message: null,
-args: null
+args: null,
+ownerTrue: false
 }
 
 module.exports = {
@@ -105,6 +106,12 @@ convertMs(milliseconds){
 			.replace("{seconds}", seconds);
 		return sentence;
 	},
+	
+	
+  addOwner(op){
+      se.owner = op;
+      se.ownerTrue = "true";
+  },
 
   start(token, Prefix, owner, op) {
   
@@ -122,7 +129,10 @@ if (!token)
     return console.log(chalk.bold.red(
       "[uplife-api]{type: error} ⚠️: make sure your give me bot Owner id"
     ));
+    if(!se.ownerTrue === "true"){
     se.owner = owner;
+    }
+    
  if (op.music === "true") {
   if(!op.youtubekey) return console.log(chalk.bold.red("[uplife-api]{type: error} ⚠️: make sure your give me youtube v3 api key for music"));
   const player = new Player(client, op.youtubekey);
@@ -206,9 +216,13 @@ color: 0x00ff00
     }
 const message = msg;
     
+    if(op.ping){}
     if (msg.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
-      msg.channel.send({ embed:{ title: "My prefix in this server is set to: `"+prefix+"`\nTo reset to default execute `"+Prefix+"reset-prefix` command!" }});
+      msg.channel.send({ embed:{ color:op.pingColor, title: "My prefix in this server is set to: `"+prefix+"`\nTo reset to default execute `"+Prefix+"reset-prefix` command!" }});
     }
+    }
+    
+   
     if (!msg.content.startsWith(prefix)) return;
     if(op.util === "true"){
     /* Util commands */
@@ -226,14 +240,17 @@ if(msg.content === prefix + "invite") {
     }
   });
 }
-    if (msg.content === prefix + "botinfo") {
+    if (msg.content === prefix + "botinfo"){
+        
+        let Owner;
+      if(se.ownerTrue === "true")owner = se.owner.map(e => client.users.find(e => e.id === e).tag);
+      if(!se.ownerTrue)Owner = client.users.find(e => e.id === owner).tag;
+        
       msg.channel.send({
         embed: {
           title: "Bot info",
           description:
-            `name: ${client.user.tag}\nprefix: ${Prefix}\nowner: **${
-              client.users.find(e => e.id === owner).tag
-            }**\nServers: **${client.guilds.size}**\nMembers: **${
+            `name: ${client.user.tag}\nprefix: ${Prefix}\nowner: **${Owner}**\nServers: **${client.guilds.size}**\nMembers: **${
               client.users.size
             }**\nLibrary: **uplife-api**\nUptime:` +
             "`" +
@@ -1851,6 +1868,7 @@ let react = op.react;
           reaction: react
         }).then(r =>{ console.log("[uplife-api]✔️ | reactrole delete") }).catch( (e) => {console.log("[uplife-api] ❌ | reactrole not delete error-"+e) });;
   },
+  
   async commandHeader(op){
        if(!se.start) return console.log("❌ | please start main file then use commandHeader");
 client.commands = new Discord.Collection();
