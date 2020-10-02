@@ -35,8 +35,14 @@ const { Player } = require("music-uplife");
  * @property {boolean} [reactRoleSetup=false] Setup reaction Role database.
  * @property {boolean} [reactRoleCreate=false] create reaction role.
  * @property {boolean} [reactRoleDelete=false] delete reaction role.
- * @property {boolean} [haas=false] Whether the haas filter is enabled.
- * @property {boolean} [mcompand=false] Whether the mcompand filter is enabled.
+ * @property {boolean} [get=false] get save value.
+ * @property {boolean} [set=false] Save value.
+ * @property {boolean} [has=false] get value true or false check value.
+ * @property {boolean} [push=false] array push value.
+ * @property {boolean} [add=false] add number value.
+ * @property {boolean} [subtract=false] remove number value.
+ * @property {boolean} [delete=false] delete value.
+ * @property {boolean} [all=false] all save value show.
  */
 
 const se = {
