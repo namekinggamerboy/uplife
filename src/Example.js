@@ -1,1 +1,3 @@
-
+/**
+ * Represents a bot Function.
+ */
