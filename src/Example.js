@@ -1,7 +1,7 @@
 /**
- * Represents a bot Function.
+ * Represents a bot Example.
  */
-class Function extends EventEmitter {
+class Example extends EventEmitter {
     /**
      * @param {Discord.Snowflake} guildID ID of the guild this queue is for.
      */
