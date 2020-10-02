@@ -24,4 +24,4 @@ jobs:
         with:
           personal_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./docs
-          cname: uplife-api.cf
+         
