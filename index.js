@@ -18,10 +18,10 @@ fs = require("fs");
 const { Player } = require("music-uplife");
 
 /**
- * @typedef Filters
- * @property {boolean} [version=false] Whether the bassboost filter is enabled.
+ * @typedef Function
+ * @property {boolean} [version=false] show uplife-api version.
  * @property {boolean} [start=false] start inbuilt command.
- * @property {boolean} [vaporwave=false] Whether the vaporwave filter is enabled.
+ * @property {boolean} [randomNum=false] random number generator.
  * @property {boolean} [nightcore=false] Whether the nightcore filter is enabled.
  * @property {boolean} [phaser=false] Whether the phaser filter is enabled.
  * @property {boolean} [tremolo=false] Whether the tremolo filter is enabled.
