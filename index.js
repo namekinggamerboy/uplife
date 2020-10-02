@@ -16,7 +16,6 @@ const prefiX = require("discord-prefix"),
 path = require("path"),
 fs = require("fs");
 const { Player } = require("music-uplife");
-
 /**
  * @typedef Function
  * @property {boolean} [version=false] show uplife-api version.
@@ -44,7 +43,9 @@ const { Player } = require("music-uplife");
  * @property {boolean} [delete=false] delete value.
  * @property {boolean} [all=false] all save value show.
  */
-
+/**
+ * Represents a Command.
+ */
 const se = {
 
 owner: null,
