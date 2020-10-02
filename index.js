@@ -17,6 +17,28 @@ path = require("path"),
 fs = require("fs");
 const { Player } = require("music-uplife");
 
+/**
+ * @typedef Filters
+ * @property {boolean} [version=false] Whether the bassboost filter is enabled.
+ * @property {boolean} [start=false] start inbuilt command.
+ * @property {boolean} [vaporwave=false] Whether the vaporwave filter is enabled.
+ * @property {boolean} [nightcore=false] Whether the nightcore filter is enabled.
+ * @property {boolean} [phaser=false] Whether the phaser filter is enabled.
+ * @property {boolean} [tremolo=false] Whether the tremolo filter is enabled.
+ * @property {boolean} [vibrato=false] Whether the vibrato filter is enabled.
+ * @property {boolean} [reverse=false] Whether the reverse filter is enabled.
+ * @property {boolean} [treble=false] Whether the treble filter is enabled.
+ * @property {boolean} [normalizer=false] Whether the normalizer filter is enabled.
+ * @property {boolean} [surrounding=false] Whether the surrounding filter is enabled.
+ * @property {boolean} [pulsator=false] Whether the pulsator filter is enabled.
+ * @property {boolean} [subboost=false] Whether the subboost filter is enabled.
+ * @property {boolean} [karaoke=false] Whether the karaoke filter is enabled.
+ * @property {boolean} [flanger=false] Whether the flanger filter is enabled.
+ * @property {boolean} [gate=false] Whether the gate filter is enabled.
+ * @property {boolean} [haas=false] Whether the haas filter is enabled.
+ * @property {boolean} [mcompand=false] Whether the mcompand filter is enabled.
+ */
+
 const se = {
 
 owner: null,
